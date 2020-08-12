@@ -1,0 +1,524 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ElasticSearch入门 | wangba's blogs</title><meta name="description" content="一、参考链接01.ES官网 02.Spring Boot Elasticsearch 入门 03.图解 Elasticsearch 原理 二、ElasticSearch概述三、Solr和ElasticSearch的对比四、ElasticSearch安装五、Kibana安装5.1 下载 Kibana官方下载地址  注：可以在past releases下载老版本  5.2 运行解压后进入bin目录运行"><meta name="keywords" content="java,ES"><meta name="author" content="wangba"><meta name="copyright" content="wangba"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://yoursite.com/2020/08/12/ElasticSearch%E5%85%A5%E9%97%A8/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="ElasticSearch入门"><meta property="og:url" content="http://yoursite.com/2020/08/12/ElasticSearch%E5%85%A5%E9%97%A8/"><meta property="og:site_name" content="wangba's blogs"><meta property="og:description" content="一、参考链接01.ES官网 02.Spring Boot Elasticsearch 入门 03.图解 Elasticsearch 原理 二、ElasticSearch概述三、Solr和ElasticSearch的对比四、ElasticSearch安装五、Kibana安装5.1 下载 Kibana官方下载地址  注：可以在past releases下载老版本  5.2 运行解压后进入bin目录运行"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-08-12T07:02:23.000Z"><meta property="article:modified_time" content="2020-08-12T07:40:52.851Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-08-12 15:40:52'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="wangba's blogs" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/wangba.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">1</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">一、参考链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81ElasticSearch%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">二、ElasticSearch概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Solr%E5%92%8CElasticSearch%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">三、Solr和ElasticSearch的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81ElasticSearch%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">四、ElasticSearch安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Kibana%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">五、Kibana安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E4%B8%8B%E8%BD%BD"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E8%BF%90%E8%A1%8C"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E6%B1%89%E5%8C%96"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 汉化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81ElasticSearch%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">6.</span> <span class="toc-text">六、ElasticSearch核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E4%B8%8E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E6%AF%94"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 与关系型数据库对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E4%B8%80%E4%B8%AA%F0%9F%8C%B0%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 一个🌰：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E6%96%87%E6%A1%A3"><span class="toc-number">6.4.</span> <span class="toc-text">6.4 文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.5.</span> <span class="toc-text">6.5 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-%E7%B4%A2%E5%BC%95"><span class="toc-number">6.6.</span> <span class="toc-text">6.6 索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-7-%E5%80%92%E6%8E%92"><span class="toc-number">6.7.</span> <span class="toc-text">6.7 倒排</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81IK%E5%88%86%E8%AF%8D%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">七、IK分词器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E5%88%86%E8%AF%8D"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 分词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 下载安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-IK-%E5%88%86%E8%AF%8D%E5%99%A8%E7%9A%84%E5%B0%8F%F0%9F%8C%B0%EF%BC%9A"><span class="toc-number">7.3.</span> <span class="toc-text">7.3 IK 分词器的小🌰：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E8%87%AA%E8%A1%8C-DIY-%E5%AD%97%E5%85%B8"><span class="toc-number">7.4.</span> <span class="toc-text">7.4 自行 DIY 字典</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81Rest%E9%A3%8E%E6%A0%BC"><span class="toc-number">8.</span> <span class="toc-text">八、Rest风格</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-Rest%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E%E8%AF%B4%E6%98%8E"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 Rest命令说明说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E5%9F%BA%E6%9C%AC%E6%B5%8B%E8%AF%95"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 基本测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E7%B1%BB%E5%9E%8B"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-%E5%85%B3%E4%BA%8E%E7%B4%A2%E5%BC%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">8.4.</span> <span class="toc-text">8.4 关于索引的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-%E5%85%B3%E4%BA%8E%E6%96%87%E6%A1%A3%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">8.5.</span> <span class="toc-text">8.5 关于文档的基本操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81SpringBoot%E9%9B%86%E6%88%90ElasticSearch"><span class="toc-number">9.</span> <span class="toc-text">九、SpringBoot集成ElasticSearch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E6%96%87%E6%A1%A3-API-%E6%93%8D%E4%BD%9C"><span class="toc-number">10.</span> <span class="toc-text">十、索引、文档 API 操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%AE%9E%E6%88%98"><span class="toc-number">11.</span> <span class="toc-text">十一、实战</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">wangba's blogs</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">ElasticSearch入门</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-12T07:02:23.000Z" title="发表于 2020-08-12 15:02:23">2020-08-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-08-12T07:40:52.851Z" title="更新于 2020-08-12 15:40:52">2020-08-12</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="一、参考链接"><a href="#一、参考链接" class="headerlink" title="一、参考链接"></a>一、参考链接</h2><p><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/">01.ES官网</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.iocoder.cn/Spring-Boot/Elasticsearch/">02.Spring Boot Elasticsearch 入门</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.iocoder.cn/Fight/Schematic-Elasticsearch-principle/">03.图解 Elasticsearch 原理</a></p>
+<h2 id="二、ElasticSearch概述"><a href="#二、ElasticSearch概述" class="headerlink" title="二、ElasticSearch概述"></a>二、ElasticSearch概述</h2><h2 id="三、Solr和ElasticSearch的对比"><a href="#三、Solr和ElasticSearch的对比" class="headerlink" title="三、Solr和ElasticSearch的对比"></a>三、Solr和ElasticSearch的对比</h2><h2 id="四、ElasticSearch安装"><a href="#四、ElasticSearch安装" class="headerlink" title="四、ElasticSearch安装"></a>四、ElasticSearch安装</h2><h2 id="五、Kibana安装"><a href="#五、Kibana安装" class="headerlink" title="五、Kibana安装"></a>五、Kibana安装</h2><h3 id="5-1-下载"><a href="#5-1-下载" class="headerlink" title="5.1 下载"></a>5.1 下载</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/kibana">Kibana官方下载地址</a></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812151628.png" alt="image-20200728094906706"></p>
+<p>注：可以在<a target="_blank" rel="noopener" href="https://www.elastic.co/downloads/past-releases#kibana">past releases</a>下载老版本</p>
+</blockquote>
+<h3 id="5-2-运行"><a href="#5-2-运行" class="headerlink" title="5.2 运行"></a>5.2 运行</h3><p>解压后进入bin目录运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kibana</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器打开：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601/</a></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812151656.png" alt="image-20200728095343130"></p>
+<h3 id="5-3-汉化"><a href="#5-3-汉化" class="headerlink" title="5.3 汉化"></a>5.3 汉化</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812151708.png" alt="image-20200728095941769"></p>
+<p>zh-CN.json是Kibana的汉化包</p>
+<p>再到 kibana.yml 中加入：<img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812151717.png" alt="image-20200728100108546"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812151725.png" alt="image-20200728100208569"></p>
+<h2 id="六、ElasticSearch核心概念"><a href="#六、ElasticSearch核心概念" class="headerlink" title="六、ElasticSearch核心概念"></a>六、ElasticSearch核心概念</h2><h3 id="6-1-与关系型数据库对比"><a href="#6-1-与关系型数据库对比" class="headerlink" title="6.1 与关系型数据库对比"></a>6.1 与关系型数据库对比</h3><blockquote>
+<p><strong>elasticsearch是面向文档，关系型数据库和 elasticsearch 客观的对比！一切都是JSON</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">MySQL</th>
+<th align="center">ElasticSearch</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">数据库（database）</td>
+<td align="center">索引（index）</td>
+</tr>
+<tr>
+<td align="center">表（tables）</td>
+<td align="center">类型（types）</td>
+</tr>
+<tr>
+<td align="center">ES</td>
+<td align="center">文档（documents）</td>
+</tr>
+<tr>
+<td align="center">列（columns）</td>
+<td align="center">字段（fields）</td>
+</tr>
+</tbody></table>
+<p><code>注：</code>其中 types 逐渐被弃用了，8.X将被删除</p>
+<h3 id="6-2-一个🌰："><a href="#6-2-一个🌰：" class="headerlink" title="6.2 一个🌰："></a>6.2 一个🌰：</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812151826.png" alt="image-20200728102741475"></p>
+<p>对应上面数据库：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152319.png" alt="image-20200728110933851"></p>
+<h3 id="6-3-设计"><a href="#6-3-设计" class="headerlink" title="6.3 设计"></a>6.3 设计</h3><p>elasticsearch(集群)中可以包含多个索引(数据库)，每个索引中可以包含多个类型(表)，每个类型下又包含多个文档(行)，每个文档中又包含多个字段(列)。</p>
+<p><strong>物理设计：</strong></p>
+<p>elasticsearch 在后台把每个索引划分成多个分片，每分分片可以在集群中的不同服务器间迁移 </p>
+<p>一个人就是一个集群！默认的集群名称就是 elaticsearh</p>
+<p>参考以下：</p>
+<ol>
+<li>云上的集群<img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152124.png" alt="image-20200728104645355"></li>
+<li>集群里的盒子<img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152218.png" alt="image-20200728104717763"></li>
+<li>节点之间<img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152227.png" alt="image-20200728104728531"></li>
+<li>索引里的小方块<img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152234.png" alt="image-20200728104741324"></li>
+</ol>
+<p>在 ElasticSearch head 中可以看见默认集群的名字为：<code>elasticsearch</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152244.png" alt="image-20200728105040312"></p>
+<p><strong>逻辑设计：</strong></p>
+<p>一个索引类型中，包含多个文档，比如说文档1，文档2。 当我们索引一篇文档时，可以通过这样的顺序找到它: </p>
+<blockquote>
+<p><code>索引 ----&gt; 类型 ----&gt; 文档ID </code></p>
+</blockquote>
+<p>通过这个组合我们就能索引到某个具体的文档。 注意：ID不必是整数，实际上它是个字符串。</p>
+<h3 id="6-4-文档"><a href="#6-4-文档" class="headerlink" title="6.4 文档"></a>6.4 文档</h3><p>就是我们的<code>一条数据</code></p>
+<p>之前说elasticsearch是面向文档的，那么就意味着索引和搜索数据的最小单位是文档，elasticsearch 中，文档有几个重要属性 :</p>
+<ul>
+<li>自我包含，一篇文档同时包含字段和对应的值，也就是同时包含 key：value！</li>
+<li>可以是层次型的，一个文档中包含自文档，复杂的逻辑实体就是这么来的！就是一个json对象！</li>
+</ul>
+<p>灵活的结构，文档不依赖预先定义的模式，我们知道关系型数据库中，要提前定义字段才能使用， 在elasticsearch中，对于字段是非常灵活的，有时候，我们可以忽略该字段，或者动态的添加一个新的字段。</p>
+<p>尽管我们可以随意的新增或者忽略某个字段，但是，每个字段的类型非常重要，比如一个年龄字段类型，可以是字符串也可以是整型。因为elasticsearch会保存字段和类型之间的映射及其他的设置。这种映射具体到每个映射的每种类型，这也是为什么在elasticsearch中，类型有时候也称为映射类型 。</p>
+<h3 id="6-5-类型"><a href="#6-5-类型" class="headerlink" title="6.5 类型"></a>6.5 类型</h3><p>​        类型是文档的逻辑容器，就像关系型数据库一样，表格是行的容器。 类型中对于字段的定义称为映射， 比如 name 映射为字符串类型。 我们说文档是无模式的，它们不需要拥有映射中所定义的所有字段， 比如新增一个字段，那么elasticsearch是怎么做的呢？elasticsearch会自动的将新字段加入映射，但是这个字段的不确定它是什么类型，elasticsearch就开始猜，如果这个值是18，那么elasticsearch会认为它是整型。 但是elasticsearch也可能猜不对， 所以最安全的方式就是提前定义好所需要的映射，这点跟关系型数据库殊途同归了，先定义好字段，然后再使用。</p>
+<h3 id="6-6-索引"><a href="#6-6-索引" class="headerlink" title="6.6 索引"></a>6.6 索引</h3><p>就是<code>数据库</code></p>
+<p>索引是映射类型的容器，elasticsearch中的索引是一个非常大的文档集合。索引存储了映射类型的字段和其他设置。 然后它们被存储到了各个分片上了。 我们来研究下分片是如何工作的。</p>
+<p>一个集群至少有一个节点，而一个节点就是一个elasricsearch进程，节点可以有多个索引默认的，如果你创建索引，那么索引将会有个5个分片 ( primary shard ,又称主分片 ) 构成的，每一个主分片会有一个副本 ( replica shard ,又称复制分片 )</p>
+<p>在 ElasticSearch head 中可以看见刚建立的索引是5个分片：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152341.png" alt="image-20200728111430420"></p>
+<h3 id="6-7-倒排"><a href="#6-7-倒排" class="headerlink" title="6.7 倒排"></a>6.7 倒排</h3><p>elasticsearch使用的是一种称为倒排索引的结构，采用Lucene倒排索作为底层。这种结构适用于快速的全文搜索， 一个索引由文档中所有不重复的列表构成，对于每一个词，都有一个包含它的文档列表。 例 如，现在有两个文档， 每个文档包含如下内容：</p>
+<blockquote>
+<p>Study every day, good good up to forever           # 文档1包含的内容<br>To forever, study every day, good good up          # 文档2包含的内容</p>
+</blockquote>
+<p>为了创建倒排索引，我们首先要将每个文档拆分成独立的词(或称为词条或者tokens)，然后创建一个包含所有不重 复的词条的排序列表，然后列出每个词条出现在哪个文档</p>
+<table>
+<thead>
+<tr>
+<th align="center">term</th>
+<th align="center">doc_1</th>
+<th align="center">doc_2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Study</td>
+<td align="center">√</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="center">To</td>
+<td align="center">X</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">every</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">forever</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">day</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">study</td>
+<td align="center">X</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">good</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">every</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">to</td>
+<td align="center">√</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="center">up</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+</tbody></table>
+<p>现在，我们试图搜索 to forever，只需要查看包含每个词条的文档 <code>score</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">term</th>
+<th align="center">doc_1</th>
+<th align="center">doc_2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">to</td>
+<td align="center">√</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="center">forever</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">total</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>如果没有别的条件，现在，这两个包含关键字的文档都将返回。</p>
+<p>在elasticsearch中， 索引 （库）这个词被频繁使用，这就是术语的使用。 在elasticsearch中，索引被分为多个分片，每份分片是一个Lucene的索引。所以一个elasticsearch索引是由多个Lucene索引组成的。别问为什么，谁让elasticsearch使用Lucene作为底层呢! 如无特指，说起索引都是指elasticsearch 的索引。</p>
+<p>关系图：</p>
+<blockquote>
+<p>一个 ES 索引 —–&gt; 多个分片(shard)</p>
+<p>​                                       一个分片(shard) —–&gt; 一个 Lucene 索引</p>
+<p>一个 ES 索引 —–&gt; —–&gt; 多个 Lucene 索引</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152359.png" alt="image-20200728131631335"></p>
+<h2 id="七、IK分词器"><a href="#七、IK分词器" class="headerlink" title="七、IK分词器"></a>七、IK分词器</h2><h3 id="7-1-分词"><a href="#7-1-分词" class="headerlink" title="7.1 分词"></a>7.1 分词</h3><p>分词：即把一段中文或者别的划分成一个个的关键字，我们在搜索时候会把自己的信息进行分词，会把数据库中或者索引库中的数据进行分词，然后进行一个匹配操作，默认的中文分词是将每个字看成一个 词，比如 “我是王八” 会被分为”我”、“是”、“王”、“八”，这显然是不符合要求的，所以我们需要安装中文分词器 IK 来解决这个问题。</p>
+<p>IK 提供了两个分词算法：ik_smart 和 ik_max_word，其中 ik_smart 为最少切分，ik_max_word为最细粒度划分！</p>
+<h3 id="7-2-下载安装"><a href="#7-2-下载安装" class="headerlink" title="7.2 下载安装"></a>7.2 下载安装</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik">IK 分词器下载</a></p>
+<p>安装：解压后放入 plugins 文件夹下</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152413.png" alt="image-20200728133942367"></p>
+<p>重启 ElasticSearch ：看到 IK 分词器已经加载到 ES 里面了</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152418.png" alt="image-20200728134131159"></p>
+<h3 id="7-3-IK-分词器的小🌰："><a href="#7-3-IK-分词器的小🌰：" class="headerlink" title="7.3 IK 分词器的小🌰："></a>7.3 IK 分词器的小🌰：</h3><p>使用 ik_smart 算法：  <code>最少切分</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152424.png" alt="image-20200728135216813"></p>
+<p>使用 ik_max_word 算法：    <code>最细粒度划分</code>：通过字典，找寻所有符合的情况</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152432.png" alt="image-20200728135308880"></p>
+<h3 id="7-4-自行-DIY-字典"><a href="#7-4-自行-DIY-字典" class="headerlink" title="7.4 自行 DIY 字典"></a>7.4 自行 DIY 字典</h3><p>在出现以下情况时：我们需要的是 <code>神魔恋</code> 应该是一个词语，而不应该被分词为 <code>神魔</code> 与 <code>恋</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152455.png" alt="image-20200728140135869"></p>
+<p>在 IK 的 config 目录下，配置 wangba.dic 和 IKAnalyzer.cfg.xml 如下：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152536.png" alt="image-20200728144840034"></p>
+<p><code>IKAnalyzer.cfg.xml：</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152547.png" alt="image-20200728145037806"></p>
+<p><code>wangba.dic:</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152556.png" alt="image-20200728145105415"></p>
+<p>重启 ES 和 Kibana：已经可以看见 wangba.dic 已经加载进去了</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152607.png" alt="image-20200728144452860"></p>
+<p>此时在Kibana中可以看见：此时 <code>神魔恋</code> 已经是一个词了</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152614.png" alt="image-20200728145311150"></p>
+<h2 id="八、Rest风格"><a href="#八、Rest风格" class="headerlink" title="八、Rest风格"></a>八、Rest风格</h2><h3 id="8-1-Rest命令说明说明"><a href="#8-1-Rest命令说明说明" class="headerlink" title="8.1 Rest命令说明说明"></a>8.1 Rest命令说明说明</h3><p>一种软件架构风格，而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交 互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
+<p>基本Rest命令说明：</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>method</strong></th>
+<th align="center">url地址</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PUT</td>
+<td align="center">localhost:9200/索引名称/类型名称/文档id</td>
+<td align="center">创建文档（指定文档id）</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="center">localhost:9200/索引名称/类型名称</td>
+<td align="center">创建文档（随机文档id）</td>
+</tr>
+<tr>
+<td align="center">_update</td>
+<td align="center">localhost:9200/索引名称/类型名称/文档id/_update</td>
+<td align="center">修改文档</td>
+</tr>
+<tr>
+<td align="center">DELETE</td>
+<td align="center">localhost:9200/索引名称/类型名称/文档id</td>
+<td align="center">删除文档</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="center">localhost:9200/索引名称/类型名称/文档id</td>
+<td align="center">查询文档通过文档id</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="center">localhost:9200/索引名称/类型名称/_search</td>
+<td align="center">查询所有数据</td>
+</tr>
+</tbody></table>
+<h3 id="8-2-基本测试"><a href="#8-2-基本测试" class="headerlink" title="8.2 基本测试"></a>8.2 基本测试</h3><p>创建索引：</p>
+<blockquote>
+<p>PUT /索引名称/<del><code>类型名称</code></del>/文档id</p>
+<p>{</p>
+<p>​            请求体</p>
+<p>}</p>
+<p>注：类型即将被弃用</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152625.png" alt="image-20200728151356309"></p>
+<p>在 ES head 中可以看见数据已经插入成功：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152637.png" alt="image-20200728151727329"></p>
+<h3 id="8-3-类型"><a href="#8-3-类型" class="headerlink" title="8.3 类型"></a>8.3 类型</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>字符串类型</strong></th>
+<th align="center"><strong>text 、 keyword</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>数值类型</strong></td>
+<td align="center">long、integer、 short、byte、double、float、half_float、 scaled_float</td>
+</tr>
+<tr>
+<td align="center"><strong>日期类型</strong></td>
+<td align="center">date</td>
+</tr>
+<tr>
+<td align="center"><strong>布尔值类型</strong></td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center"><strong>二进制类型</strong></td>
+<td align="center">binary</td>
+</tr>
+</tbody></table>
+<p>自定义类型：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152919.png" alt="image-20200728153315700"></p>
+<p>通过 GET 请求可以看见 test2 索引的信息：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812152926.png" alt="image-20200728153419852"></p>
+<p>自动匹配类型：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153010.png" alt="image-20200728154312363"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153017.png" alt="image-20200728154429831"></p>
+<h3 id="8-4-关于索引的基本操作"><a href="#8-4-关于索引的基本操作" class="headerlink" title="8.4 关于索引的基本操作"></a>8.4 关于索引的基本操作</h3><blockquote>
+<p>增加：如上</p>
+<p>查询：如上</p>
+</blockquote>
+<blockquote>
+<p>修改：如下</p>
+</blockquote>
+<p>方法一：直接覆盖</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153031.png" alt="image-20200728155827534"></p>
+<p>可以看见 version 发生了改变</p>
+<p>方法二：</p>
+<blockquote>
+<p>POST /索引名称/_doc/文档id/__update</p>
+<p>{</p>
+<p>​            请求体</p>
+<p>}</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153102.png" alt="image-20200728160513999"></p>
+<p>可以看见 version 再次发生了改变</p>
+<blockquote>
+<p>删除</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153148.png" alt="image-20200728161148536"></p>
+<h3 id="8-5-关于文档的基本操作"><a href="#8-5-关于文档的基本操作" class="headerlink" title="8.5 关于文档的基本操作"></a>8.5 关于文档的基本操作</h3><p><code>基本操作：</code></p>
+<blockquote>
+<p>增加数据    PUT</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153158.png" alt="image-20200729085012520"></p>
+<blockquote>
+<p>查询数据    GET</p>
+</blockquote>
+<p>方式一：简单的 ID 查询</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153226.png" alt="image-20200729085341564"></p>
+<p>可以看见，推荐使用 <code>GET /索引/_doc/文档ID</code> 来进行操作</p>
+<p>方式二：简单的条件查询</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153621.png" alt="image-20200729091400956"></p>
+<p>可以看见 <code>type</code> 已经被丢弃了</p>
+<blockquote>
+<p>更新数据    POST</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153609.png" alt="image-20200729090204208"></p>
+<p>可以看见，推荐使用 <code>POST /索引/_update/文档ID</code> 来进行操作</p>
+<blockquote>
+<p><code>复杂操作：</code>select (排序、分页、高亮、模糊查询、精准查询 )</p>
+</blockquote>
+<blockquote>
+<p>查询</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153640.png" alt="image-20200729092702190"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153648.png" alt="image-20200729093150116"></p>
+<p>ES 中有 <code>zhangsan</code> 和 <code>zhangshan 008</code> ，通过关键字<code>zhangsan</code> 查询，会将分词后的结果全部查询出来，且每一个都是有 <code>_score</code> 的。</p>
+<blockquote>
+<p>hits：在Java可以得到索引和文档的信息、查询的结果总数、具体文档数据信息（可以通过遍历得到具体的各种信息）</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153700.png" alt="image-20200729094426031"></p>
+<blockquote>
+<p>通过 <code>_source</code> 来指定最后的输出结果</p>
+</blockquote>
+<blockquote>
+<p>排序</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153709.png" alt="image-20200729095730668"></p>
+<blockquote>
+<p>通过 <code>sort</code> 进行排序，用 <code>desc</code> 和 <code>asc</code> 来进行降序和升序</p>
+</blockquote>
+<blockquote>
+<p>分页    /search/{current}/{pagesize}</p>
+</blockquote>
+<p>第一页一个数据</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153722.png" alt="image-20200729100357807"></p>
+<p>第二页的一个数据</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153731.png" alt="image-20200729100512315"></p>
+<p>第一页的两个数据</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153738.png" alt="image-20200729100615639"></p>
+<blockquote>
+<p>bool 值查询</p>
+</blockquote>
+<p><code>must 命令</code> ==  and</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153749.png" alt="image-20200729101211913"></p>
+<p><code>should 命令</code> == or</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153757.png" alt="image-20200729102255051"></p>
+<p>两个都查询到了</p>
+<p><code>must_not 命令</code> ==  not</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153807.png" alt="image-20200729102630406"></p>
+<p><code>filter 命令</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153820.png" alt="image-20200729103629498"></p>
+<blockquote>
+<p>gt：大于  / gte：大于等于 / lt：小于 / lte：小于等于</p>
+</blockquote>
+<p><code>匹配多个条件</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153836.png" alt="image-20200729104255294"></p>
+<p>直接在 <code>tags</code> 中加空格</p>
+<p><code>精确查询</code></p>
+<p>term 查询是直接通过倒排索引指定的词条进行精确的查询</p>
+<ul>
+<li><p>term：直接查询精确的</p>
+</li>
+<li><p>match：使用分词器解析（先分析文档，在通过分析的文档进行查询）</p>
+</li>
+</ul>
+<p>两个类型：</p>
+<p><code>text：</code> 会被分词解析器解析</p>
+<p><code>keyword： </code> 不会被分词解析器解析</p>
+<p>使用 keywod 分词器：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153858.png" alt="image-20200729112314281"></p>
+<p>使用 standard 分词器：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153906.png" alt="image-20200729112353845"></p>
+<p><code>text：</code> 可以看见下面被分词了，所以出现了两个结果</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153915.png" alt="image-20200729112831873"></p>
+<p><code>keyword： </code> 可以看见下面没有被分词</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153925.png" alt="image-20200729113003169"></p>
+<blockquote>
+<p>高亮查询</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153934.png" alt="image-20200729122744294"></p>
+<h2 id="九、SpringBoot集成ElasticSearch"><a href="#九、SpringBoot集成ElasticSearch" class="headerlink" title="九、SpringBoot集成ElasticSearch"></a>九、SpringBoot集成ElasticSearch</h2><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.6/java-rest-high.html">官方 ES Client 文档</a></p>
+<p>1.依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.6.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.找对象</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812153948.png" alt="image-20200729134909854"></p>
+<p>3.分析类中方法</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812154043.png" alt="image-20200729140717144"></p>
+<p>ES 的版本与本机中的版本不一致 </p>
+<p>自行配置 SpringBoot 中的 ES 版本</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812154036.png" alt="image-20200729141538339"></p>
+<p><code>RestClientAutoConfiguration</code> 和 <code>RestClientProperties</code></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200812154019.png" alt="image-20200729143842388"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Source code recreated from a .class file by IntelliJ IDEA</span></span><br><span class="line"><span class="comment">// (powered by Fernflower decompiler)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.boot.autoconfigure.elasticsearch.rest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.time.Duration;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.HttpHost;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.auth.AuthScope;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.auth.Credentials;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.auth.UsernamePasswordCredentials;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.client.CredentialsProvider;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.impl.client.BasicCredentialsProvider;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.RestClient;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.RestClientBuilder;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.RestHighLevelClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.ObjectProvider;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.PropertyMapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RestClientConfigurations</span> </span>&#123;</span><br><span class="line">    RestClientConfigurations() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Configuration(</span></span><br><span class="line"><span class="meta">        proxyBeanMethods = false</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">  <span class="comment">// RestClient  普通客户端</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RestClientFallbackConfiguration</span> </span>&#123;</span><br><span class="line">        RestClientFallbackConfiguration() &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Bean</span></span><br><span class="line">        <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">        <span class="function">RestClient <span class="title">elasticsearchRestClient</span><span class="params">(RestClientBuilder builder)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> builder.build();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Configuration(</span></span><br><span class="line"><span class="meta">        proxyBeanMethods = false</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    <span class="meta">@ConditionalOnClass(&#123;RestHighLevelClient.class&#125;)</span></span><br><span class="line">  <span class="comment">// RestHighLevelClient  高级客户端</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RestHighLevelClientConfiguration</span> </span>&#123;</span><br><span class="line">        RestHighLevelClientConfiguration() &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Bean</span></span><br><span class="line">        <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">        <span class="function">RestHighLevelClient <span class="title">elasticsearchRestHighLevelClient</span><span class="params">(RestClientBuilder restClientBuilder)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> RestHighLevelClient(restClientBuilder);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Bean</span></span><br><span class="line">        <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">        <span class="function">RestClient <span class="title">elasticsearchRestClient</span><span class="params">(RestClientBuilder builder, ObjectProvider&lt;RestHighLevelClient&gt; restHighLevelClient)</span> </span>&#123;</span><br><span class="line">            RestHighLevelClient client = (RestHighLevelClient)restHighLevelClient.getIfUnique();</span><br><span class="line">            <span class="keyword">return</span> client != <span class="keyword">null</span> ? client.getLowLevelClient() : builder.build();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Configuration(</span></span><br><span class="line"><span class="meta">        proxyBeanMethods = false</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">  <span class="comment">// RestClientBuilder</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RestClientBuilderConfiguration</span> </span>&#123;</span><br><span class="line">        RestClientBuilderConfiguration() &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Bean</span></span><br><span class="line">        <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">        <span class="function">RestClientBuilder <span class="title">elasticsearchRestClientBuilder</span><span class="params">(RestClientProperties properties, ObjectProvider&lt;RestClientBuilderCustomizer&gt; builderCustomizers)</span> </span>&#123;</span><br><span class="line">            HttpHost[] hosts = (HttpHost[])properties.getUris().stream().map(HttpHost::create).toArray((x$<span class="number">0</span>) -&gt; &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> HttpHost[x$<span class="number">0</span>];</span><br><span class="line">            &#125;);</span><br><span class="line">            RestClientBuilder builder = RestClient.builder(hosts);</span><br><span class="line">            PropertyMapper map = PropertyMapper.get();</span><br><span class="line">            map.from(properties::getUsername).whenHasText().to((username) -&gt; &#123;</span><br><span class="line">                CredentialsProvider credentialsProvider = <span class="keyword">new</span> BasicCredentialsProvider();</span><br><span class="line">                Credentials credentials = <span class="keyword">new</span> UsernamePasswordCredentials(properties.getUsername(), properties.getPassword());</span><br><span class="line">                credentialsProvider.setCredentials(AuthScope.ANY, credentials);</span><br><span class="line">                builder.setHttpClientConfigCallback((httpClientBuilder) -&gt; &#123;</span><br><span class="line">                    <span class="keyword">return</span> httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">            builder.setRequestConfigCallback((requestConfigBuilder) -&gt; &#123;</span><br><span class="line">                properties.getClass();</span><br><span class="line">                map.from(properties::getConnectionTimeout).whenNonNull().asInt(Duration::toMillis).to(requestConfigBuilder::setConnectTimeout);</span><br><span class="line">                properties.getClass();</span><br><span class="line">                map.from(properties::getReadTimeout).whenNonNull().asInt(Duration::toMillis).to(requestConfigBuilder::setSocketTimeout);</span><br><span class="line">                <span class="keyword">return</span> requestConfigBuilder;</span><br><span class="line">            &#125;);</span><br><span class="line">            builderCustomizers.orderedStream().forEach((customizer) -&gt; &#123;</span><br><span class="line">                customizer.customize(builder);</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">return</span> builder;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="十、索引、文档-API-操作"><a href="#十、索引、文档-API-操作" class="headerlink" title="十、索引、文档 API 操作"></a>十、索引、文档 API 操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wangba;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.wangba.enity.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.TermQuery;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.util.QueryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.bulk.BulkRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.bulk.BulkResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.delete.DeleteRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.delete.DeleteResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.get.GetRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.get.GetResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.index.IndexRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.index.IndexResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.search.SearchRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.search.SearchRequestBuilder;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.search.SearchResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.support.master.AcknowledgedResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.update.UpdateRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.action.update.UpdateResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.RequestOptions;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.RestHighLevelClient;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.indices.CreateIndexRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.indices.CreateIndexResponse;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.client.indices.GetIndexRequest;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.common.unit.TimeValue;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.common.xcontent.XContentType;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.index.query.MatchAllQueryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.index.query.QueryBuilders;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.index.query.TermQueryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.search.SearchHit;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.search.builder.SearchSourceBuilder;</span><br><span class="line"><span class="keyword">import</span> org.elasticsearch.search.fetch.subphase.FetchSourceContext;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.repository.query.Param;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.ls.LSOutput;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpringbootEsApiApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;restHighLevelClient&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> RestHighLevelClient client;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: 创建索引</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">createIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 1. 创建索引请求</span></span><br><span class="line">        CreateIndexRequest request = <span class="keyword">new</span> CreateIndexRequest(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">        <span class="comment">// 2. 让客户端执行请求 indicesClient</span></span><br><span class="line">        CreateIndexResponse createIndexResponse = client.indices().create(request, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">        System.out.println(createIndexResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 查询索引</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">existIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        GetIndexRequest request = <span class="keyword">new</span> GetIndexRequest(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> exists = client.indices().exists(request, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">      System.out.println(exists);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 删除索引</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">      DeleteIndexRequest request = <span class="keyword">new</span> DeleteIndexRequest(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">      AcknowledgedResponse delete = client.indices().delete(request, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">      System.out.println(delete);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Description</span>: 添加文档 PUT test/_doc/1</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">addDocument</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">      <span class="comment">// 创建对象</span></span><br><span class="line">      User user = <span class="keyword">new</span> User(<span class="string">&quot;wangba&quot;</span>, <span class="number">25</span>);</span><br><span class="line">      <span class="comment">// 创建请求</span></span><br><span class="line">      IndexRequest request = <span class="keyword">new</span> IndexRequest(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">      <span class="comment">// 规则：  ==&gt;   PUT test/_doc/1</span></span><br><span class="line">      request.id(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">      request.timeout(<span class="string">&quot;1s&quot;</span>);</span><br><span class="line">      <span class="comment">// 将我们的数据放入请求中   JSON格式</span></span><br><span class="line">      request.source(JSON.toJSONString(user), XContentType.JSON);</span><br><span class="line">      <span class="comment">// 客户端发送请求，返回结果</span></span><br><span class="line">        IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">        System.out.println(indexResponse);</span><br><span class="line">        System.out.println(indexResponse.toString());</span><br><span class="line">        System.out.println(indexResponse.status());   <span class="comment">// 对应的状态就是 CREATED 等</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 文档是否存在</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">existDocument</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// GET test/_doc/1</span></span><br><span class="line">        GetRequest request = <span class="keyword">new</span> GetRequest(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">        <span class="comment">// _source 不显示上下文</span></span><br><span class="line">        request.fetchSourceContext(<span class="keyword">new</span> FetchSourceContext(<span class="keyword">false</span>));</span><br><span class="line">        request.storedFields(<span class="string">&quot;_none_&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> exists = client.exists(request, RequestOptions.DEFAULT);</span><br><span class="line">        System.out.println(exists);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 查询文档数据  GET test/_doc/1</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">getDocument</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        GetRequest request = <span class="keyword">new</span> GetRequest(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line"></span><br><span class="line">        GetResponse documentFields = client.get(request, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">        System.out.println(documentFields.getSourceAsString());</span><br><span class="line">        System.out.println(documentFields);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 更新文档</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">updateDocument</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        UpdateRequest request = <span class="keyword">new</span> UpdateRequest(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">&quot;zhansan&quot;</span>, <span class="number">22</span>);</span><br><span class="line">        request.doc(JSON.toJSONString(user), XContentType.JSON);</span><br><span class="line">        UpdateResponse update = client.update(request, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">        System.out.println(update);</span><br><span class="line">        System.out.println(update.status());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 删除文档  DELETE test/_doc/1</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteDocument</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        DeleteRequest request = <span class="keyword">new</span> DeleteRequest(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line"></span><br><span class="line">        DeleteResponse delete = client.delete(request, RequestOptions.DEFAULT);</span><br><span class="line">        System.out.println(delete);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 批处理请求</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addBulkDocument</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BulkRequest bulkRequest = <span class="keyword">new</span> BulkRequest();</span><br><span class="line">        bulkRequest.timeout(<span class="string">&quot;10s&quot;</span>);</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;User&gt; userArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        userArrayList.add(<span class="keyword">new</span> User(<span class="string">&quot;zhangsan&quot;</span>, <span class="number">5</span>));</span><br><span class="line">        userArrayList.add(<span class="keyword">new</span> User(<span class="string">&quot;lisi&quot;</span>, <span class="number">10</span>));</span><br><span class="line">        userArrayList.add(<span class="keyword">new</span> User(<span class="string">&quot;xiaoxin&quot;</span>, <span class="number">25</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; userArrayList.size(); i++) &#123;</span><br><span class="line">            bulkRequest.add(</span><br><span class="line">                    <span class="keyword">new</span> IndexRequest(<span class="string">&quot;test&quot;</span>)</span><br><span class="line">                    .id(<span class="string">&quot;&quot;</span>+(i+<span class="number">1</span>))</span><br><span class="line">                    .source(JSON.toJSONString(userArrayList.get(i)), XContentType.JSON)</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BulkResponse bulk = client.bulk(bulkRequest, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">        System.out.println(bulk);</span><br><span class="line">        System.out.println(bulk.status());</span><br><span class="line">        System.out.println(bulk.hasFailures());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Description</span>: 按条件搜索</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Param</span>: []</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span>: void</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Author</span>: wang ba</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@Date</span>: 2020/7/29</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        查询：</span></span><br><span class="line"><span class="comment">        SearchRequest          搜索请求</span></span><br><span class="line"><span class="comment">        SearchSourceBuilder    条件构造</span></span><br><span class="line"><span class="comment">        HighlightBuilder       高亮构造</span></span><br><span class="line"><span class="comment">        TermQueryBuilder       精确查询</span></span><br><span class="line"><span class="comment">        MatchAllQueryBuilder   所有查询</span></span><br><span class="line"><span class="comment">        // xxxBuilder</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">searchDocument</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 创建搜索请求</span></span><br><span class="line">        SearchRequest searchRequest = <span class="keyword">new</span> SearchRequest(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造搜索条件</span></span><br><span class="line">        SearchSourceBuilder searchSourceBuilder = <span class="keyword">new</span> SearchSourceBuilder();</span><br><span class="line">        <span class="comment">// QueryBuilders.termQuery 精确查询</span></span><br><span class="line">        <span class="comment">// QueryBuilders.matchAllQuery 查询所有</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery(&quot;age&quot;, &quot;25&quot;);</span></span><br><span class="line">        <span class="comment">//searchSourceBuilder.query(termQueryBuilder);</span></span><br><span class="line"></span><br><span class="line">        MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();</span><br><span class="line">        searchSourceBuilder.query(matchAllQueryBuilder);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 分页</span></span><br><span class="line">        <span class="comment">// searchSourceBuilder.from();</span></span><br><span class="line">        <span class="comment">// searchSourceBuilder.size();</span></span><br><span class="line"></span><br><span class="line">        searchSourceBuilder.timeout(<span class="keyword">new</span> TimeValue(<span class="number">60</span>, TimeUnit.SECONDS));</span><br><span class="line"></span><br><span class="line">        searchRequest.source(searchSourceBuilder);</span><br><span class="line"></span><br><span class="line">        SearchResponse search = client.search(searchRequest, RequestOptions.DEFAULT);</span><br><span class="line">        System.out.println(JSON.toJSONString(search.getHits()));</span><br><span class="line">        System.out.println(<span class="string">&quot;+++++++++++++我是分割线++++++++++++++&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (SearchHit documentFields : search.getHits().getHits()) &#123;</span><br><span class="line">            System.out.println(documentFields.getSourceAsMap());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="十一、实战"><a href="#十一、实战" class="headerlink" title="十一、实战"></a>十一、实战</h2></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">wangba</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/08/12/ElasticSearch%E5%85%A5%E9%97%A8/">http://yoursite.com/2020/08/12/ElasticSearch%E5%85%A5%E9%97%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">wangba's blogs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java/">java</a><a class="post-meta__tags" href="/tags/ES/">ES</a></div><div class="post_share"></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By wangba</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script></div></body></html>
