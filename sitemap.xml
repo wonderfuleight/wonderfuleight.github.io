@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/08/19/SpringBoot%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8/</loc>
+    
+    <lastmod>2020-08-19</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/08/18/SpringBoot%E6%95%B4%E5%90%88JSON/</loc>
     
     <lastmod>2020-08-18</lastmod>
@@ -53,7 +60,7 @@
 
   <url>
     <loc>http://yoursite.com/</loc>
-    <lastmod>2020-08-18</lastmod>
+    <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -61,42 +68,42 @@
   
   <url>
     <loc>http://yoursite.com/tags/%E6%B3%A8%E8%A7%A3/</loc>
-    <lastmod>2020-08-18</lastmod>
+    <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/SpringBoot/</loc>
-    <lastmod>2020-08-18</lastmod>
+    <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/JSON/</loc>
-    <lastmod>2020-08-18</lastmod>
+    <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/Java/</loc>
-    <lastmod>2020-08-18</lastmod>
+    <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/java/</loc>
-    <lastmod>2020-08-18</lastmod>
+    <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/ES/</loc>
-    <lastmod>2020-08-18</lastmod>
+    <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
