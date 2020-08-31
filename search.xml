@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>0001.Two Sum</title>
+      <link href="/2020/08/31/0001-Two-Sum/"/>
+      <url>/2020/08/31/0001-Two-Sum/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="0001-两数之和-Easy"><a href="#0001-两数之和-Easy" class="headerlink" title="0001. 两数之和  Easy"></a><a href="https://leetcode-cn.com/problems/two-sum/">0001. 两数之和</a>  <font color="green" size=6.5>Easy</font></h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 <strong>两个</strong> 整数，并返回他们的数组下标。</p><p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p><p><strong>示例:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定 nums &#x3D; [2, 7, 11, 15], target &#x3D; 9</span><br><span class="line"></span><br><span class="line">因为 nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><blockquote><p>傻瓜式想法：遍历两次，求和（去除重复的元素，位置不同的相等元素可以进行计算）</p><p>力扣内心OS：你这样的时间复杂度能过算我输！！！</p><p>😯：就这，略施小计：<code>空间换时间之术</code> </p></blockquote><p>首先，遍历一遍数组将数组的值放入 Map 中，然后再遍历一次，将 target - 取到的值，但是要注意不能仅仅判断是</p><p>否存在这个值，因为可能会出现下面这种情况：target = 4，该数组中就只有一个 2，这样就会出错。所以还要判断</p><p>取到的值还不能是第一次的元素。</p><h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            hashMap.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (hashMap.containsKey(temp) &amp;&amp; hashMap.get(temp) != i) &#123;</span><br><span class="line">                res[<span class="number">0</span>] = hashMap.get(temp);</span><br><span class="line">                res[<span class="number">1</span>] = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot中的Servlet、Filter、Listener</title>
       <link href="/2020/08/31/SpringBoot%E4%B8%AD%E7%9A%84Servlet%E3%80%81Filter%E3%80%81Listener/"/>
       <url>/2020/08/31/SpringBoot%E4%B8%AD%E7%9A%84Servlet%E3%80%81Filter%E3%80%81Listener/</url>
