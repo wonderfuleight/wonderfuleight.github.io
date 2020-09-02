@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>SpringBoot中类型转换</title>
+      <link href="/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
+      <url>/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><p>如果前端传来一个日期参数，是用 String 类型的，我们如何在后端进行传参呢？</p><p>也即如下这种情况：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">(Date date)</span> </span>&#123;</span><br><span class="line">        System.out.println(date);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>浏览器输入：<a href="http://localhost:8080/hello?date=2020-01-01">http://localhost:8080/hello?date=2020-01-01</a></p><p>可以在后台看到  <code>WARN</code> ：</p><blockquote><p>Failed to convert value of type ‘java.lang.String’ to required type ‘java.util.Date’</p></blockquote><h2 id="二、解决"><a href="#二、解决" class="headerlink" title="二、解决"></a>二、解决</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringTransDate</span> <span class="keyword">implements</span> <span class="title">Converter</span>&lt;<span class="title">String</span>, <span class="title">Date</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">convert</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s != <span class="keyword">null</span> &amp;&amp; !<span class="string">&quot;&quot;</span>.equals(s)) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> simpleDateFormat.parse(s);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>注：要将该类使用 @Component 注入</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>0003.Longest Substring Without Repeating Characters</title>
       <link href="/2020/09/01/0003-Longest-Substring-Without-Repeating-Characters/"/>
       <url>/2020/09/01/0003-Longest-Substring-Without-Repeating-Characters/</url>
