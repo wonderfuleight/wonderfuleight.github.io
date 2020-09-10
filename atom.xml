@@ -395,9 +395,9 @@
     
     <category term="SpringBoot" scheme="http://yoursite.com/tags/SpringBoot/"/>
     
-    <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
     <category term="JSON" scheme="http://yoursite.com/tags/JSON/"/>
+    
+    <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
