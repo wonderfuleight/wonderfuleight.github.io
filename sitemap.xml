@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2020-09-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%BA%8C/</loc>
     
     <lastmod>2020-09-11</lastmod>
@@ -129,13 +136,6 @@
   
   <url>
     <loc>http://yoursite.com/2020/08/12/ElasticSearch%E5%85%A5%E9%97%A8/</loc>
-    
-    <lastmod>2020-08-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2020-08-12</lastmod>
     
