@@ -242,14 +242,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/MySQL/</loc>
+    <loc>http://yoursite.com/tags/SQL/</loc>
     <lastmod>2020-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/SQL/</loc>
+    <loc>http://yoursite.com/tags/MySQL/</loc>
     <lastmod>2020-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
