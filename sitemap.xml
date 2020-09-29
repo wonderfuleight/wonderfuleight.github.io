@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangba.me/2020/09/29/Test/</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangba.me/friends/index.html</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangba.me/tags/index.html</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangba.me/categories/index.html</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangba.me/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/</loc>
     
     <lastmod>2020-09-28</lastmod>
@@ -135,13 +163,6 @@
   </url>
   
   <url>
-    <loc>http://wangba.me/tags/index.html</loc>
-    
-    <lastmod>2020-08-21</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangba.me/2020/08/20/SpringBoot%E6%95%B4%E5%90%88%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8/</loc>
     
     <lastmod>2020-08-20</lastmod>
@@ -183,24 +204,10 @@
     
   </url>
   
-  <url>
-    <loc>http://wangba.me/link/index.html</loc>
-    
-    <lastmod>2020-08-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangba.me/categories/index.html</loc>
-    
-    <lastmod>2020-08-12</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>http://wangba.me/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -208,126 +215,126 @@
   
   <url>
     <loc>http://wangba.me/tags/%E6%B3%A8%E8%A7%A3/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/SpringBoot/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/JSON/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Java/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Leetcode/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Array/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/String/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Sliding-Window/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Two-pointer/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/SQL/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/MySQL/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/CookBook/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Life/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/NoSQL/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Session/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/Spring-Security/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/java/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://wangba.me/tags/ES/</loc>
-    <lastmod>2020-09-28</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
