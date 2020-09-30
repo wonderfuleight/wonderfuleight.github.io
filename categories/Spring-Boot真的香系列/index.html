@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -17,9 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>SpringBoot整合Spring Security (三) - wangba&#39;s blogs</title>
-  
-    <meta name="keywords" content="Spring Boot,Spring Security">
+  <title>分类：Spring Boot真的香系列 - wangba&#39;s blogs</title>
   
 
   
@@ -331,7 +331,7 @@
   
     
     
-        <div class='cover-wrapper post search' style="display: none;">
+        <div class='cover-wrapper  search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
           
@@ -412,8 +412,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">SpringBoot整合Spring Security (三)</div> 
+  <div id="pjax-ispage">false</div> 
+  <div id="pjax-pageTitle"></div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -442,270 +442,558 @@
         
         
 
+
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-
-
+    
+      
+  <section class="post-list">
+    
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
   
-  <div class="article-meta" id="top">
+  
+  
+  
     
-    
-    
-      <h1 class="title">
+    <h2 class="article-title" >
+      <a href="/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/">
         SpringBoot整合Spring Security (三)
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年9月30日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item browse leancloud">
-    <a class='notlink'>
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
       
-      <div id="lc-pv" data-title="SpringBoot整合Spring Security (三)" data-path="/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/">
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        次浏览
-      </div>
-    </a>
-  </div>
+        一、OverView​        在前后端不分离时代，可能使用的就是上一节中这种方法；在现在这种前后端分离遍地走的情况下，已经不再推荐使用传统的 session ，而是使用现在比较流行的 JWT 这种 token 的方式解决
+​        对比分析一下：
 
 
-          
-        
-      </div>
+
+
+有状态登录
+无状态登录
+
+
+
+定义
+服务端需要记录每次会话的客户端信息，从而识别客户端身份，根据用户身份进行请求的处理
+服...
+      
     
   </div>
-
-
   
-  <h2 id="一、OverView"><a href="#一、OverView" class="headerlink" title="一、OverView"></a>一、OverView</h2><p>​        在前后端不分离时代，可能使用的就是<a href="http://wangba.me/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/">上一节</a>中这种方法；在现在这种前后端分离遍地走的情况下，已经不再推荐使用传统的 session ，而是使用现在比较流行的 JWT 这种 token 的方式解决</p>
-<p>​        对比分析一下：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>有状态登录</th>
-<th>无状态登录</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>定义</td>
-<td>服务端需要记录每次会话的客户端信息，从而识别客户端身份，根据用户身份进行请求的处理</td>
-<td>服务端不保存任何客户端请求者信息；客户端的每次请求必须具备自描述信息，通过这些信息识别客户端身份</td>
-</tr>
-<tr>
-<td>优点</td>
-<td>比较方便，不需要做多余的处理</td>
-<td>使用 token 很灵活；服务端不需要存数据；客户端也可以发送给多个服务器</td>
-</tr>
-<tr>
-<td>缺点</td>
-<td>只能是网页端，在 IOS、Android不行；服务端保存大量数据；集群化不太行</td>
-<td>配置稍微复杂(其实在框架的加成下，不复杂)</td>
-</tr>
-</tbody></table>
-<p><code>有状态登录</code></p>
-<ul>
-<li>🌰：在 Tomcat 中，用户登录后，需要把用户的信息保存在服务器的 session 中，然后发送给用户一个 Cookie 值，记录对应的 session 值，等用户下一次再次访问该服务器时，浏览器会自动带上这个 Cookie 值，服务端再识别其中的 session 值，进行判断</li>
-</ul>
-<p><code>无状态登录</code></p>
-<ul>
-<li>🌰：客户端发送账户密码到服务端进行验证；认证后服务端发送一个 token 给客户端；以后客户端每次发送请求都将 token 携带上进行认证，进行判断</li>
-</ul>
-<h2 id="二、Test"><a href="#二、Test" class="headerlink" title="二、Test"></a>二、Test</h2><p>​        在前后端分离的基础上，现在前端和后端只是通过 JSON 进行交互，所以现在的页面跳转全部由前端进行控制，后端只是返回不同的 JSON 罢了</p>
-<p>重写<code>SecurityConfig</code>中的 configure 方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    http.authorizeRequests()</span><br><span class="line">            .anyRequest().authenticated()</span><br><span class="line">            .and()</span><br><span class="line">            <span class="comment">// 登出页面 + 登出成功后页面</span></span><br><span class="line">            .logout()</span><br><span class="line">            .logoutUrl(<span class="string">&quot;/logout&quot;</span>)</span><br><span class="line">            .logoutSuccessUrl(<span class="string">&quot;/login.html&quot;</span>)</span><br><span class="line">            .logoutSuccessHandler((httpServletRequest, httpServletResponse, authentication) -&gt; &#123;</span><br><span class="line">                httpServletResponse.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">                PrintWriter out = httpServletResponse.getWriter();</span><br><span class="line">                out.write(<span class="string">&quot;注销成功&quot;</span>);</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;)</span><br><span class="line">            .and()</span><br><span class="line">            <span class="comment">// 登录页面 + 登录接口</span></span><br><span class="line">            .formLogin().loginPage(<span class="string">&quot;/login.html&quot;</span>)</span><br><span class="line">            .loginProcessingUrl(<span class="string">&quot;/securityLogin&quot;</span>)</span><br><span class="line">            .permitAll()</span><br><span class="line">            <span class="comment">// 登录失败处理器</span></span><br><span class="line">            .failureHandler((httpServletRequest, httpServletResponse, e) -&gt; &#123;</span><br><span class="line">                httpServletResponse.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">                PrintWriter out = httpServletResponse.getWriter();</span><br><span class="line">                out.write(e.getMessage());</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="comment">// 登录成功处理器</span></span><br><span class="line">            .successHandler((httpServletRequest, httpServletResponse, authentication) -&gt; &#123;</span><br><span class="line">                Object principal = authentication.getPrincipal();</span><br><span class="line">                httpServletResponse.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">                PrintWriter out = httpServletResponse.getWriter();</span><br><span class="line">                out.write(<span class="keyword">new</span> ObjectMapper().writeValueAsString(principal));</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;)</span><br><span class="line">            .and()</span><br><span class="line">            .csrf().disable()</span><br><span class="line">    ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>登录接口</code></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929172425.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929172425.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929172423472"></p>
-<blockquote>
-<p>注：</p>
-<ul>
-<li>可以看到使用前后端分离，就不需要后端来控制跳转页面等，只需要将 JSON 发给前端就行</li>
-<li>这里面的 password 为空，是框架做的，具体可以看这里</li>
-</ul>
-</blockquote>
-<p><code>登录失败</code></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930092635.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930092635.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930092629637"></p>
-<blockquote>
-<p>注：</p>
-<ul>
-<li>无论是用户名和密码其中一个错误，就会返回 Bad credentials 提示，主要也是为了安全着想，具体流程可以看下面的 3.1 小节</li>
-</ul>
-</blockquote>
-<p><code>注销登录</code></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930093600.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930093600.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930093559635"></p>
-<h2 id="三、Deep-Learning"><a href="#三、Deep-Learning" class="headerlink" title="三、Deep Learning"></a>三、Deep Learning</h2><h3 id="3-1-深入了解登录失败"><a href="#3-1-深入了解登录失败" class="headerlink" title="3.1 深入了解登录失败"></a>3.1 深入了解登录失败</h3><p>​        在上面我们提到了无论是用户名和密码其中一个错误，就会返回 Bad credentials，实则在其中还有很多种错误，而且用户名是有用户名错误，只是最终被 Bad credentials 覆盖了，稍微分析一下：</p>
-<p><code>AbstractUserDetailsAuthenticationProvider</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Authentication <span class="title">authenticate</span><span class="params">(Authentication authentication)</span> <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">    Assert.isInstanceOf(UsernamePasswordAuthenticationToken.class, authentication, () -&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.messages.getMessage(<span class="string">&quot;AbstractUserDetailsAuthenticationProvider.onlySupports&quot;</span>, <span class="string">&quot;Only UsernamePasswordAuthenticationToken is supported&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    String username = authentication.getPrincipal() == <span class="keyword">null</span> ? <span class="string">&quot;NONE_PROVIDED&quot;</span> : authentication.getName();</span><br><span class="line">    <span class="keyword">boolean</span> cacheWasUsed = <span class="keyword">true</span>;</span><br><span class="line">    UserDetails user = <span class="keyword">this</span>.userCache.getUserFromCache(username);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        cacheWasUsed = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            user = <span class="keyword">this</span>.retrieveUser(username, (UsernamePasswordAuthenticationToken)authentication);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UsernameNotFoundException var6) &#123;</span><br><span class="line">            <span class="keyword">this</span>.logger.debug(<span class="string">&quot;User &#x27;&quot;</span> + username + <span class="string">&quot;&#x27; not found&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.hideUserNotFoundExceptions) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> BadCredentialsException(<span class="keyword">this</span>.messages.getMessage(<span class="string">&quot;AbstractUserDetailsAuthenticationProvider.badCredentials&quot;</span>, <span class="string">&quot;Bad credentials&quot;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">          <span class="comment">// 省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上面这段代码中，进行调试可以看见：</p>
-<ul>
-<li>会先在缓存中查询一下是否有过</li>
-<li>再调用 retrieveUser 来进行判断</li>
-<li>一旦抛出 UsernameNotFoundException ，就看 hideUserNotFoundExceptions 的值了，如果为 true，就会抛出 Bad credentials</li>
-</ul>
-<p>进行断点调试：输错用户名，并打上断点：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930135354.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930135354.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930135352906"></p>
-<p>通过上图就能看出，hideUserNotFoundExceptions 默认值是 true 的</p>
-<h3 id="3-2-未认证处理"><a href="#3-2-未认证处理" class="headerlink" title="3.2 未认证处理"></a>3.2 未认证处理</h3><p>在前后端分离，如果出现未认证的状态，不可能控制前端来跳转页面等，只能给前端返回相应的信息即可：</p>
-<p>在 <code>AuthenticationEntryPoint</code> 接口中有一个方法：<code>commence</code></p>
-<p>在 <code>LoginUrlAuthenticationEntryPoint</code> 中实现方式为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">commence</span><span class="params">(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">    String redirectUrl = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.useForward) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.forceHttps &amp;&amp; <span class="string">&quot;http&quot;</span>.equals(request.getScheme())) &#123;</span><br><span class="line">            redirectUrl = <span class="keyword">this</span>.buildHttpsRedirectUrlForRequest(request);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (redirectUrl == <span class="keyword">null</span>) &#123;</span><br><span class="line">            String loginForm = <span class="keyword">this</span>.determineUrlToUseForThisRequest(request, response, authException);</span><br><span class="line">            <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">                logger.debug(<span class="string">&quot;Server side forward to: &quot;</span> + loginForm);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            RequestDispatcher dispatcher = request.getRequestDispatcher(loginForm);</span><br><span class="line">            dispatcher.forward(request, response);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        redirectUrl = <span class="keyword">this</span>.buildRedirectUrlToLoginPage(request, response, authException);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.redirectStrategy.sendRedirect(request, response, redirectUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这段代码中最主要的是看一下 <strong>useForward</strong> 的默认值，如果是 <strong>true</strong>，那么默认就是走转发；如果是 <strong>false</strong>，那么默认走的就是重定向</p>
-<p>使出断点调试大法：</p>
-<ul>
-<li>在 <strong>Postman</strong> 中直接使用 <strong>GET</strong> 方式请求：localhost:8080/security</li>
-</ul>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141616.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141616.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930141614962"></p>
-<p>此方法在第一节中已经写过了，就是输出一个 <strong>Spring Security</strong></p>
-<ul>
-<li>在方法内打上断点</li>
-</ul>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141514.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141514.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930141512452"></p>
-<p>从上面的图就可以看见，<strong>useForward</strong> 的默认值是 <strong>false</strong>，那么就可以确定是走的重定向</p>
-<p>只需要重写该方法覆盖它就行：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.exceptionHandling()</span><br><span class="line">.authenticationEntryPoint((req, resp, authException) -&gt; &#123;</span><br><span class="line">    resp.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">    PrintWriter out = resp.getWriter();</span><br><span class="line">    out.write(<span class="string">&quot;尚未登录，请先登录&quot;</span>);</span><br><span class="line">    out.flush();</span><br><span class="line">    out.close();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>![image-20200930143626120](/Users/wangdechao/Library/Application Support/typora-user-images/image-20200930143626120.png)</p>
-
-  
-  
-    
-    <div class='footer'>
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-30</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
       
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=http://wangba.me/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/>http://wangba.me/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/</a></p>
-              
-            
-          </blockquote>
+        <div>
+          <a class='readmore' href='/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/'>
+            阅读全文
+          </a>
         </div>
       
-      
     </div>
   
-  
-    
 
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-30T15:09:29+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月30日</p>
-  </a>
 </div>
 
+          </div>
         
       
         
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Spring-Boot/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Spring Boot</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Spring-Security/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Spring Security</p></a></div>
-
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-  </div>
-
-
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
   
   
-
   
-    <div class="prev-next">
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/">
+        SpringBoot整合Spring Security (二)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
       
-      
-        <a class='next' href='/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/'>
-          <p class='title'>SpringBoot整合Spring Security (二)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>一、Test环境与上一节的环境一致，这一节主要来进行自定义操作
+        一、Test环境与上一节的环境一致，这一节主要来进行自定义操作
 在 SecurityConfig  中重写这两个方法：
-12345678910111213141516@Overridepubli...</p>
-        </a>
+12345678910111213141516@Overridepublic void configure(WebSecurity web) throws Exception &#123;    web.ignoring().antMatchers(&quot;/js/**...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-28</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/'>
+            阅读全文
+          </a>
+        </div>
       
     </div>
   
-</article>
 
-
-  
-
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
-    
-    <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-  </article>
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/27/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%80/">
+        SpringBoot整合Spring Security (一)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverViewJava 中权限管理最常用的技术应该就是：Spring Security 和 Shiro。
+虽然 Shiro 用它轻量、简单、易于集成占据一席之地，但随着 SpringBoot 的流行，Spring Security 也跟着鸡犬升天，就目前的趋势来看，Spring Security 结合 Oauth2、JWT 等更加方便。
+这次先小试牛刀一下，快速入门……
+二、Envir...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-27</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/27/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%80/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/22/SpringBoot%E6%95%B4%E5%90%88Session/">
+        SpringBoot整合Session
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView
+Spring Session has the simple goal of free up session management from the limitations of the HTTP session stored in the server.
+The solution makes it easy to share session data between s...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-22</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/22/SpringBoot%E6%95%B4%E5%90%88Session/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/16/SpringBoot%E6%95%B4%E5%90%88Redis/">
+        SpringBoot整合Redis
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView面试官：redis 知道吗
+🐢：不知道
+面试官：你回去等通知吧
+
+Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。在2013年5月之前，其开发由VMware赞助。https://zh.wikip...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-16</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/16/SpringBoot%E6%95%B4%E5%90%88Redis/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/14/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B9%8B%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+        SpringBoot整合Spring Data JPA 之多条件搜索工具类
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView​        在前面已经介绍过了 SpringBoot 整合 JPA 了，但是一般在公司业务中，如果出现很多次多条件搜索查询的情况，那么就会用大量冗余代码了；再结合注解的思想。本次将公共部分提取出来，并用注解的方式进行操作，可以参考前面使用注解进行 AOP 处理日志，也符合了 SpringBoot 的思想。
+二、BaseQueryQueryWord 
+12345678...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-14</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/14/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B9%8B%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%E7%B1%BB/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%BA%8C/">
+        SpringBoot整合Spring Data JPA(二)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView​        在上一篇文章中介绍了一下 Spring Data JPA 的一下简单的 CRUD，但是在公司业务中，不可能这么简单；且在业务中大部分都是查询业务，具体点就是动态查询，什么单表多条件查询、多表多条件查询等等……    
+
+注：使用环境还是和上一篇一样
+
+二、自定义SQL查询如果想和这里面写原生的 SQL 语句，只要在 repository 中这样写就行：
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%BA%8C/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/">
+        SpringBoot整合Spring Data JPA(一)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView
+JPA(Java Persistence API)是Sun官方提出的Java持久化规范。它为Java开发人员提供了一种对象/关联映射工具来管理Java应用中的关系数据。
+
+Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/">
+        SpringBoot整合MyBatis
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView​    在上篇文章中已经简单的写过 SpringBoot 整合 JDBCTemplate 了，但是现在的公司应该很少有用 JDBCTemplate，国内一般都是 MyBatis 或者是 Spring Data JPA，在本篇文章中就来整合一下 MyBatis。
+二、环境搭建新建 SpringBoot 项目，选上 Web、MySQL，在 pom.xml  中配置一下数据库...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-09</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/08/SpringBoot%E6%95%B4%E5%90%88JDBCTemplate/">
+        SpringBoot整合JDBCTemplate
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、环境搭建1. 引入依赖1234567891011121314151617181920212223242526272829303132333435363738// WEB&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-star...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-08</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/08/SpringBoot%E6%95%B4%E5%90%88JDBCTemplate/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+      <br>
+      <div class="prev-next">
+        
+        <p class="current">
+          1 / 2
+        </p>
+        
+          <a class="next" rel="next" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/page/2/">
+            <section class="post next white-box shadow">
+              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        
+      </div>
+    
+  
 
 
-
-
-
-
+    
+  
 </div>
 <aside class='l_side'>
   
@@ -713,28 +1001,136 @@
     
     
 
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box circle' href='/about/'>
+          <img no-lazy src='https://gitee.com/wonderfuleight/blogImg/raw/master//20200929133102.jpeg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wangba's blogs</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:wonderfuleight@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/wonderfuleight"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="http://wonderfuleight.gitee.io/"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
 
+  
 
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+  
+    
+    
+  
+
+  <section class="widget category shadow desktop">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81OverView"><span class="toc-text">一、OverView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Test"><span class="toc-text">二、Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Deep-Learning"><span class="toc-text">三、Deep Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5"><span class="toc-text">3.1 深入了解登录失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%9C%AA%E8%AE%A4%E8%AF%81%E5%A4%84%E7%90%86"><span class="toc-text">3.2 未认证处理</span></a></li></ol></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
+            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
+            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
+            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
+            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(20)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
+            id="categoriesWangBa-s-CookBook"
+            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
 
   
 
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop mobile">
+    
+  <header>
+    
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Array/" style="font-size: 14px; color: #999">Array</a> <a href="/tags/CookBook/" style="font-size: 14px; color: #999">CookBook</a> <a href="/tags/ES/" style="font-size: 14px; color: #999">ES</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Java/" style="font-size: 21.5px; color: #666">Java</a> <a href="/tags/Leetcode/" style="font-size: 19px; color: #777">Leetcode</a> <a href="/tags/Life/" style="font-size: 14px; color: #999">Life</a> <a href="/tags/MySQL/" style="font-size: 19px; color: #777">MySQL</a> <a href="/tags/NoSQL/" style="font-size: 14px; color: #999">NoSQL</a> <a href="/tags/SQL/" style="font-size: 16.5px; color: #888">SQL</a> <a href="/tags/Session/" style="font-size: 14px; color: #999">Session</a> <a href="/tags/Sliding-Window/" style="font-size: 16.5px; color: #888">Sliding Window</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 19px; color: #777">Spring Security</a> <a href="/tags/String/" style="font-size: 16.5px; color: #888">String</a> <a href="/tags/Two-pointer/" style="font-size: 14px; color: #999">Two pointer</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 14px; color: #999">注解</a>
+    </div>
+  </section>
+
+
+  
+
+  
+
 
 </aside>
-
 
 
         

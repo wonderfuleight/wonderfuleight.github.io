@@ -592,6 +592,39 @@ Kibana官方下载地址
   
     
     
+  
+
+  <section class="widget category shadow desktop">
+    
+  <header>
+    
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
+            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
+            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
+            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
+            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(20)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
+            id="categoriesWangBa-s-CookBook"
+            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
 
   
 
@@ -1252,7 +1285,107 @@ const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
   </div>
 </body>
 </html>
-EDmXWdxrwuqQT-MdYXbMMI',
+'tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "快来评论吧~";
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+})(jQuery);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
     app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
     custom_api_server: '',
 
