@@ -595,7 +595,7 @@
 <p>只需要重写该方法覆盖它就行：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.exceptionHandling()</span><br><span class="line">.authenticationEntryPoint((req, resp, authException) -&gt; &#123;</span><br><span class="line">    resp.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">    PrintWriter out = resp.getWriter();</span><br><span class="line">    out.write(<span class="string">&quot;尚未登录，请先登录&quot;</span>);</span><br><span class="line">    out.flush();</span><br><span class="line">    out.close();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>![image-20200930143626120](/Users/wangdechao/Library/Application Support/typora-user-images/image-20200930143626120.png)</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930164934.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930164934.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930143626120"></p>
 
   
   
@@ -630,7 +630,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-30T15:09:29+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-30T16:49:43+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年9月30日</p>
@@ -678,6 +678,11 @@
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2020/10/01/Array/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Array</p>
+          <p class='content'></p>
+        </a>
       
       
         <a class='next' href='/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/'>
@@ -1149,8 +1154,6 @@ function pjax_darkmodejs(){
 // mix-blend-mode support?
 if(supportCss3('mix-blend-mode')){
   window.darkmode = new Darkmode(options);
-  
-  window.darkmode.showWidget();
   
   pjax_darkmodejs();
 }
