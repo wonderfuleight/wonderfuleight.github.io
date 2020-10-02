@@ -19,6 +19,8 @@
   
   <title>Array - wangba&#39;s blogs</title>
   
+    <meta name="keywords" content="Leetcode,Algorithm">
+  
 
   
 
@@ -459,6 +461,13 @@
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/">重学算法系列</a>
+    </a>
+  </div>
+
 
           
         
@@ -466,7 +475,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年10月1日</p>
+    <p>发布于：2020年10月2日</p>
   </a>
 </div>
 
@@ -477,7 +486,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Array" data-path="/2020/10/01/Array/">
+      <div id="lc-pv" data-title="Array" data-path="/2020/10/02/Array/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -494,7 +503,110 @@
 
 
   
-  
+  <h2 id="一、OverView"><a href="#一、OverView" class="headerlink" title="一、OverView"></a>一、OverView</h2><p>思维导图：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002093205.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002093205.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002093203544">        </p>
+<h2 id="二、特性"><a href="#二、特性" class="headerlink" title="二、特性"></a>二、特性</h2><p>数组应该是所有程序员中最熟悉的数据结构了，如果你简单的回忆一下数组的具体含义，你可以得到已经几个重要的结论：</p>
+<ul>
+<li>🐷 线性结构</li>
+<li>🐢 连续内存</li>
+<li>🐭 存储相同类型</li>
+</ul>
+<h3 id="2-1-线性结构"><a href="#2-1-线性结构" class="headerlink" title="2.1 线性结构"></a>2.1 线性结构</h3><p>顾名思义，线性结构就是这个结构像线性一样，而非是其它结构，这样说的确有点抽象，可以从下面几个例子来看一下：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002101432.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002101432.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002101430898"></p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>这里的 <strong>Array</strong> 是使用 <strong>Java</strong> 中的内存模型，即 <strong>char</strong> 为 2 个字节</li>
+<li>链表没有使用哨兵模式 (后面会提到)</li>
+</ul>
+</blockquote>
+<h3 id="2-2-连续内存和相同数据类型"><a href="#2-2-连续内存和相同数据类型" class="headerlink" title="2.2 连续内存和相同数据类型"></a>2.2 连续内存和相同数据类型</h3><p>正如上面例子中的数组一样，在这个数组中，它们的地址是连续的，且数组中每一个元素都是 char 类型，正是由于这两个特性，让数组实现了这一生中最重要的操作：快速查询，它可以达到 <strong>O(1)</strong> 的速度，当然要对这里进行限制条件，即准确的表达应该是按照<code>下标</code>进行查询，它的时间复杂度可以达到 <strong>O(1)</strong> ，而不是我们经常说的根据某个值来确定它的位置等，这样的查询方式 (已经排好序) 最快也是 <strong>O(logn)</strong> </p>
+<p>先来看一下是如何实现根据下标来进行时间复杂度为 <strong>O(1)</strong> 的操作：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002112308.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002112308.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002112307187"></p>
+<p>我们很容易就发现这样的规律：</p>
+<p>前提：char[] charList = new char[6]</p>
+<p>结论：<code>address = baseAddress + i * charSize</code></p>
+<p>也就是说，我们只需要知道以下条件就行：</p>
+<ul>
+<li>该数组的起始地址 baseAddress，也就是图中的 1000</li>
+<li>该数组是什么类型，这里是 Java 的 char 类型，字节数为 2</li>
+</ul>
+<p>就这样，可以通过上面条件求出这里任意一个元素的地址。</p>
+<h4 id="假知识："><a href="#假知识：" class="headerlink" title="假知识："></a>假知识：</h4><p>如果，起始地址从 1 开始的话，来计算一下会发生什么情况？</p>
+<p>计算公式是不是要变为：<code>address = baseAddress + (i - 1) * charSize</code> </p>
+<p>你想，你细想，是不是每次都要多进行一次<strong>减法</strong>操作，这样 <code>加法器</code> (在计组中是没有减法器存在的，通过转换为加法来计算)是不是就要多进行一次计算</p>
+<p>这会不会就是当年定义数组从 0 开始的那位程序员的 idea 呢？(<del>强者如斯</del>) 当然不是，这仅仅是一种规定而已，上面的一系列猜测，仅仅是为了猜而猜</p>
+<h3 id="2-3-插入和删除"><a href="#2-3-插入和删除" class="headerlink" title="2.3 插入和删除"></a>2.3 插入和删除</h3><p><strong>One coin has two sides</strong>，有利自然有弊。在上面已经说过了数组的查询，也是数组的最大优点；当然数组在插入和删除的时间复杂度比较高，但是也有一些优化的小 tips。</p>
+<p><code>插入</code></p>
+<p>为什么说数组中插入，会是时间复杂度变高呢？主要是数组是连续存储的，如果只是在最后一个元素插入一个新的元素，那么没什么大不了；但是你要是在第一个元素后面插入一个新的元素，那就要把原本的第二个元素到最后一个元素全部向后移动一个 typeSize，如下：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002153520.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002153520.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002153518082"></p>
+<p>由上面的图，可以轻易看出插入新的元素在最后：前面元素的位置都未变；插入在第二个位置：第二个元素到最后一个元素的位置都 <strong>+ 1</strong> 了</p>
+<p>平均的时间复杂度就为：<strong>O(n)</strong></p>
+<p>当然这样做是有前提的：就是是要有序的。如果对排序没有要求的，可以如下操作：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002155752.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002155752.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002155750878"></p>
+<p>此时只需要把原本在 1 位置的元素<strong>复制</strong>到新扩展的位置，把 1 中的元素换成新的元素，在上述的例子中对应的就是：将 n 复制到位置 5 上，然后将位置 1 的元素覆盖为新元素 a</p>
+<p><code>删除</code></p>
+<p>删除数组中的元素与插入操作类似：主要是为了保证内存的连续性，如果删除最后一个元素，那没什么问题；如果是删除第一个元素，那么第一个元素后面的所有元素都要向前移动一个位置。</p>
+<p>则平均的时间复杂度就为：<strong>O(n)</strong></p>
+<p>一些特殊情况下的删除：如果对没有立马对删除元素进行垃圾回收的操作，有什么比较好的方式？</p>
+<p>在 JVM 进行垃圾回收时，有以下几种算法：</p>
+<ul>
+<li>标记 - 清除算法</li>
+<li>复制算法</li>
+<li>标记 - 整理算法</li>
+<li>分代收集算法</li>
+</ul>
+<p>在这里主要介绍一下 <strong>标记 - 清除算法</strong>，简单来说：</p>
+<p>在 JVM 进行垃圾回收时，不立马进行回收，只是对要进行回收的元素进行标记，等到积累到一定量再进行一次批处理，例子如下：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002163730.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002163730.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002163729145"></p>
+<p>可以看见，只需要对要删除的元素进行标记，随后到最后一次性进行回收</p>
+<p>但是这样也会带来很多问题，如效率问题和空间问题，如下：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002163919.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002163919.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002163917519"></p>
+<p>如果是删除的元素是一段一段的，那么就会产生大量的空间碎片，所以 JVM 后面还有很多其余的回收算法</p>
+<h3 id="2-4-关于数组越界的问题"><a href="#2-4-关于数组越界的问题" class="headerlink" title="2.4 关于数组越界的问题"></a>2.4 关于数组越界的问题</h3><p>我们尝试在 Ubuntu 18.04 64bit 中运行下面这段 C 代码：</p>
+<p><code>OverFlow.c</code> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(; i&lt;=<span class="number">3</span>; i++)&#123;</span><br><span class="line">        arr[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照正常想法走下去：会打印三行 hello world，就会运行完毕</p>
+<p>让我们进行测试吧：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002172344.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002172344.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002172343083"></p>
+<p>你就会看到控制台开始无限打印 hello world 了：</p>
+<p>![image-20201002172557103](/Users/wangdechao/Library/Application Support/typora-user-images/image-20201002172557103.png)</p>
+<p>只要在内存足够的情况下，这个程序就会一直运行下去，这就是典型的 StackOverFlow 问题</p>
+<p>简单的就可以理解成如下结构：</p>
+<img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002184829.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002184829.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002184827040" style="zoom:50%;" />
+
+<p>这个栈的结构具体可以参考《深入理解计算机系统》，这里出现上述情况的主要原因：</p>
+<ul>
+<li>C 语言中是所有的内存都是可以访问 (除了受限内存以外)</li>
+<li>在上述代码中 i &lt;=3，说明 a[3] = 0 在内存的某个地址上</li>
+<li>而这个地址本身是 <code>原来的 i 的地址</code> ，所以就相当于 i = 3 又被赋值为 i = 0，然后继续不断循环</li>
+</ul>
+<p>如果想知道这个栈溢出是如何具体实现的话，可以是用 objdump 命令进行反编译，再进行分析，其中主要的汇编代码如下：其中关键行应该为 65f、67e、682、661</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">000000000000063a &lt;main&gt;:</span><br><span class="line"> 63a:    55                       push   %rbp</span><br><span class="line"> 63b:    48 89 e5                 mov    %rsp,%rbp</span><br><span class="line"> 63e:    48 83 ec 20              sub    $0x20,%rsp</span><br><span class="line"> 642:    89 7d ec                 mov    %edi,-0x14(%rbp)</span><br><span class="line"> 645:    48 89 75 e0              mov    %rsi,-0x20(%rbp)</span><br><span class="line"> 649:    c7 45 fc 00 00 00 00     movl   $0x0,-0x4(%rbp)</span><br><span class="line"> 650:    48 c7 45 f0 00 00 00     movq   $0x0,-0x10(%rbp)</span><br><span class="line"> 657:    00 </span><br><span class="line"> 658:    c7 45 f8 00 00 00 00     movl   $0x0,-0x8(%rbp)</span><br><span class="line"> 65f:    eb 1d                    jmp    67e &lt;main+0x44&gt;</span><br><span class="line"> 661:    8b 45 fc                 mov    -0x4(%rbp),%eax</span><br><span class="line"> 664:    48 98                    cltq   </span><br><span class="line"> 666:    c7 44 85 f0 00 00 00     movl   $0x0,-0x10(%rbp,%rax,4)</span><br><span class="line"> 66d:    00 </span><br><span class="line"> 66e:    48 8d 3d 9f 00 00 00     lea    0x9f(%rip),%rdi        # 714 &lt;_IO_stdin_used+0x4&gt;</span><br><span class="line"> 675:    e8 96 fe ff ff           callq  510 &lt;puts@plt&gt;</span><br><span class="line"> 67a:    83 45 fc 01              addl   $0x1,-0x4(%rbp)</span><br><span class="line"> 67e:    83 7d fc 03              cmpl   $0x3,-0x4(%rbp)</span><br><span class="line"> 682:    7e dd                    jle    661 &lt;main+0x27&gt;</span><br><span class="line"> 684:    b8 00 00 00 00           mov    $0x0,%eax</span><br><span class="line"> 689:    c9                       leaveq </span><br><span class="line"> 68a:    c3                       retq   </span><br><span class="line"> 68b:    0f 1f 44 00 00           nopl   0x0(%rax,%rax,1)</span><br></pre></td></tr></table></figure>
+
+<p>其实，在这个巨大漏洞出来后，现在的内存已经加了金丝雀保护 (canary) 了，为了让这个漏洞复现，在上面编译的过程中，已经使用 <strong>-fno-stack-protector</strong> 将保护关闭了</p>
+<p>而如果该程序在 Java 中复现，在编译时就会抛出 <strong>ArrayIndexOutOfBoundsException</strong> 的异常了</p>
+<h2 id="三、Java-中的数组"><a href="#三、Java-中的数组" class="headerlink" title="三、Java 中的数组"></a>三、Java 中的数组</h2><p>在 Java 中，对于数组没有什么好了解的，顶多就一个基本语法；但是在 Java 中有一个集合类，是每个 Java 程序员应该每天都会用到的，它就是 <code>ArrayList</code> </p>
+<p>先看一下它的继承和实现关系</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002213613.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201002213613.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201002213610816"></p>
+<ul>
+<li>它继承了 <strong>AbstractList</strong> ，实现了 <strong>List</strong>    ====&gt;    它是一个数组队列，提供了相关的添加、删除、修改、遍历等功能</li>
+<li>它实现了<strong>RandomAccess 接口</strong>    ====&gt;    实现这个这个接口的 List 集合是支持<strong>快速随机访问</strong></li>
+<li>它实现 <strong>java.io.Serializable 接口</strong>    ====&gt;    ArrayList <strong>支持序列化</strong>，<strong>能通过序列化去传输</strong></li>
+<li>并且要注意，在单线程中使用它，在多线程使用 <strong>Vector(少)</strong> 或者 <strong>CopyOnWriteArrayList(多)**，尽量还是使用后者较多，前者主要是基于 **synchronized</strong> 关键字，后者是基于 <strong>ReentrantLock</strong> 操作的</li>
+</ul>
+<p>它与 Java 自带的普通数组最大的区别就是：它是<code>动态</code>的</p>
+<p>这里主要基于源码分析一下动态扩容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; <span class="keyword">this</span>.elementData.length &amp;&amp; (<span class="keyword">this</span>.elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA || minCapacity &gt; <span class="number">10</span>)) &#123;</span><br><span class="line">        ++<span class="keyword">this</span>.modCount;</span><br><span class="line">        <span class="keyword">this</span>.grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Object[] grow(<span class="keyword">int</span> minCapacity) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.elementData = Arrays.copyOf(<span class="keyword">this</span>.elementData, <span class="keyword">this</span>.newCapacity(minCapacity));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Object[] grow() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.grow(<span class="keyword">this</span>.size + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">newCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> oldCapacity = <span class="keyword">this</span>.elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">            <span class="keyword">return</span> Math.max(<span class="number">10</span>, minCapacity);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> minCapacity;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> newCapacity - <span class="number">2147483639</span> &lt;= <span class="number">0</span> ? newCapacity : hugeCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：</p>
+<ul>
+<li>对于变长数据结构，当结构中没有空余空间可供使用时，就需要进行扩容。在 ArrayList 中，当空间用完，其会按照原数组空间的1.5倍进行扩容。</li>
+</ul>
+</blockquote>
+
   
   
     
@@ -511,7 +623,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://wangba.me/2020/10/01/Array/>http://wangba.me/2020/10/01/Array/</a></p>
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/02/Array/>http://wangba.me/2020/10/02/Array/</a></p>
               
             
           </blockquote>
@@ -528,10 +640,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-01T22:35:15+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T22:17:11+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年10月1日</p>
+    <p>更新于：2020年10月2日</p>
   </a>
 </div>
 
@@ -539,6 +651,9 @@
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Algorithm/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Algorithm</p></a></div>
+
 
         
       
@@ -574,15 +689,10 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/10/01/Algorithm/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Algorithm</p>
+      
+        <a class='next' href='/2020/10/01/Algorithm/'>
+          <p class='title'>Algorithm<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>​            最近实习后发现自己的算法能力急剧下降，CRUD 只是下限，算法才是上限，决定重新开一个系列，将数据结构与算法重新学一遍。这次主要参考的课程是《数据结构与算法之美》和《算...</p>
-        </a>
-      
-      
-        <a class='next' href='/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/'>
-          <p class='title'>SpringBoot整合Spring Security (三)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>一、OverView​        在前后端不分离时代，可能使用的就是上一节中这种方法；在现在这种前后端分离遍地走的情况下，已经不再推荐使用传统的 session ，而是使用现在比较流行的 J...</p>
         </a>
       
     </div>
@@ -614,6 +724,20 @@
     
 
 
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81OverView"><span class="toc-text">一、OverView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E6%80%A7"><span class="toc-text">二、特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84"><span class="toc-text">2.1 线性结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%BF%9E%E7%BB%AD%E5%86%85%E5%AD%98%E5%92%8C%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.2 连续内存和相同数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%87%E7%9F%A5%E8%AF%86%EF%BC%9A"><span class="toc-text">假知识：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4"><span class="toc-text">2.3 插入和删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%85%B3%E4%BA%8E%E6%95%B0%E7%BB%84%E8%B6%8A%E7%95%8C%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">2.4 关于数组越界的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Java-%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-text">三、Java 中的数组</span></a></li></ol>
+    </div>
+  </section>
 
 
   
