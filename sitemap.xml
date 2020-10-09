@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangba.me/2020/10/09/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E5%9B%9B/</loc>
+    
+    <lastmod>2020-10-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangba.me/2020/10/09/0206-Reverse-Linked-List/</loc>
     
     <lastmod>2020-10-09</lastmod>
