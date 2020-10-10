@@ -5,7 +5,9 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
+      
+        <meta name="robots" content="noindex,follow">
+      
     
   
   <!-- 渲染优化 -->
@@ -19,7 +21,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020 - wangba&#39;s blogs</title>
+  <title>wangba&#39;s blogs</title>
   
 
   
@@ -445,8 +447,7 @@
         
 
 <div class='l_main'>
-	
-		
+  
   <section class="post-list">
     
     
@@ -460,17 +461,24 @@
   
     
     <h2 class="article-title" >
-      <a href="/2020/09/22/SpringBoot%E6%95%B4%E5%90%88Session/">
-        SpringBoot整合Session
+      <a href="/2020/08/18/ControllerAdvice%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        ControllerAdvice注解的使用
       </a>
     </h2>
   
   <div class='md'>
     
       
-        一、OverView
-Spring Session has the simple goal of free up session management from the limitations of the HTTP session stored in the server.
-The solution makes it easy to share session data between s...
+        一、用法
+处理全局异常
+预设全局数据
+请求参数预处理
+
+二、处理全局异常我们只需要在 application.properties中配置：spring.servlet.multipart.max-file-size=1KB
+就可以看见在上传图片时就会报 500 异常：
+
+此时我们可以自己自定义处理 这种异常：
+12345678910111213@ControllerAdvicepublic ...
       
     
   </div>
@@ -478,7 +486,7 @@ The solution makes it easy to share session data between s...
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2020-09-22</time>
+        <time>2020-08-18</time>
         
           <span class="dot"></span>
           <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
@@ -486,7 +494,7 @@ The solution makes it easy to share session data between s...
       </div>
       
         <div>
-          <a class='readmore' href='/2020/09/22/SpringBoot%E6%95%B4%E5%90%88Session/'>
+          <a class='readmore' href='/2020/08/18/ControllerAdvice%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BD%BF%E7%94%A8/'>
             阅读全文
           </a>
         </div>
@@ -508,19 +516,23 @@ The solution makes it easy to share session data between s...
   
     
     <h2 class="article-title" >
-      <a href="/2020/09/16/SpringBoot%E6%95%B4%E5%90%88Redis/">
-        SpringBoot整合Redis
+      <a href="/2020/08/12/ElasticSearch%E5%85%A5%E9%97%A8/">
+        ElasticSearch入门
       </a>
     </h2>
   
   <div class='md'>
     
       
-        一、OverView面试官：redis 知道吗
-🐢：不知道
-面试官：你回去等通知吧
+        一、参考链接01.ES官网
+02.Spring Boot Elasticsearch 入门
+03.图解 Elasticsearch 原理
+二、ElasticSearch概述三、Solr和ElasticSearch的对比四、ElasticSearch安装五、Kibana安装5.1 下载
+Kibana官方下载地址
 
-Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。在2013年5月之前，其开发由VMware赞助。https://zh.wikip...
+注：可以在past releases下载老版本
+
+5.2 运行解压后进入bin目...
       
     
   </div>
@@ -528,470 +540,12 @@ Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2020-09-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        <time>2020-08-12</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2020/09/16/SpringBoot%E6%95%B4%E5%90%88Redis/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/15/%E9%93%81%E6%B0%8F%E7%8E%8B%E6%9C%9D%E6%BB%A1%E6%B1%89%E5%85%A8%E5%B8%AD-919/">
-        铁氏王朝满汉全席 919
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        919 铁氏王朝满汉全席 v1.3
-
-清蒸大闸蟹  5只
-材料：
-
-
-
-
-
-
-
-
-
-阳澄湖大闸蟹
-生姜
-
-
-蒜瓣
-香葱
-
-
-紫苏
-生抽
-
-
-香醋
-料酒
-
-
-香油
-鸡精
-
-
-糖
-
-
-
-可乐鸡翅
-材料：
-
-
-
-
-鸡翅10个
-可乐300毫升
-
-
-
-老抽1勺
-盐，鸡精适量
-
-
-葱姜，八角适量
-
-
-
-糖醋排骨
-材料：
-
-
-
-
-猪肋排500克
-葱适量
-
-
-
-姜适量
-八角2个
-
-
-老抽2勺
-生抽2勺
-
-
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/WangBa-s-CookBook/">WangBa's CookBook</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/15/%E9%93%81%E6%B0%8F%E7%8E%8B%E6%9C%9D%E6%BB%A1%E6%B1%89%E5%85%A8%E5%B8%AD-919/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/14/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B9%8B%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-        SpringBoot整合Spring Data JPA 之多条件搜索工具类
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView​        在前面已经介绍过了 SpringBoot 整合 JPA 了，但是一般在公司业务中，如果出现很多次多条件搜索查询的情况，那么就会用大量冗余代码了；再结合注解的思想。本次将公共部分提取出来，并用注解的方式进行操作，可以参考前面使用注解进行 AOP 处理日志，也符合了 SpringBoot 的思想。
-二、BaseQueryQueryWord 
-12345678...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/14/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B9%8B%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%E7%B1%BB/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%BA%8C/">
-        SpringBoot整合Spring Data JPA(二)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView​        在上一篇文章中介绍了一下 Spring Data JPA 的一下简单的 CRUD，但是在公司业务中，不可能这么简单；且在业务中大部分都是查询业务，具体点就是动态查询，什么单表多条件查询、多表多条件查询等等……    
-
-注：使用环境还是和上一篇一样
-
-二、自定义SQL查询如果想和这里面写原生的 SQL 语句，只要在 repository 中这样写就行：
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%BA%8C/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/">
-        SpringBoot整合Spring Data JPA(一)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView
-JPA(Java Persistence API)是Sun官方提出的Java持久化规范。它为Java开发人员提供了一种对象/关联映射工具来管理Java应用中的关系数据。
-
-Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/">
-        SpringBoot整合MyBatis
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView​    在上篇文章中已经简单的写过 SpringBoot 整合 JDBCTemplate 了，但是现在的公司应该很少有用 JDBCTemplate，国内一般都是 MyBatis 或者是 Spring Data JPA，在本篇文章中就来整合一下 MyBatis。
-二、环境搭建新建 SpringBoot 项目，选上 Web、MySQL，在 pom.xml  中配置一下数据库...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-09</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/08/SpringBoot%E6%95%B4%E5%90%88JDBCTemplate/">
-        SpringBoot整合JDBCTemplate
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、环境搭建1. 引入依赖1234567891011121314151617181920212223242526272829303132333435363738// WEB&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-star...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-08</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/08/SpringBoot%E6%95%B4%E5%90%88JDBCTemplate/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/04/0076-Minimum-Window-Substring/">
-        0076.Minimum Window Substring
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/04/0076-Minimum-Window-Substring/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/03/SpringBoot%E6%95%B4%E5%90%88AOP/">
-        SpringBoot整合AOP
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、背景​        在公司写业务的时候，都会有保存日志的操作，方便出错的时候进行排查；一般不仅仅在数据库中保存日志，
-也会在后端控制台打印一些需要的信息。在这里，一般使用 AOP 织入的方式将日志保存在数据库中，使用一些日
-志包将某些 Controller 层的信息打印在控制台。
-二、准备Entiy:1234567891011121314151617181920@Entity@Tabl...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-03</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/03/SpringBoot%E6%95%B4%E5%90%88AOP/'>
+          <a class='readmore' href='/2020/08/12/ElasticSearch%E5%85%A5%E9%97%A8/'>
             阅读全文
           </a>
         </div>
@@ -1011,28 +565,21 @@ Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的�
       <br>
       <div class="prev-next">
         
-          <a class="prev" rel="prev" href="/archives/2020/">
+          <a class="prev" rel="prev" href="/page/3/">
             <section class="post prev white-box shadow" >
               <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
             </section>
           </a>
         
         <p class="current">
-          2 / 4
+          4 / 4
         </p>
-        
-          <a class="next" rel="next" href="/archives/2020/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
         
       </div>
     
   
 
 
-	
 </div>
 <aside class='l_side'>
   
@@ -1175,6 +722,7 @@ Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的�
 
 
 </aside>
+
 
 
         

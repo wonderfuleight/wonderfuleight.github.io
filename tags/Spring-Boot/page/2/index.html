@@ -462,6 +462,102 @@
   
     
     <h2 class="article-title" >
+      <a href="/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/">
+        SpringBoot整合Spring Data JPA(一)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView
+JPA(Java Persistence API)是Sun官方提出的Java持久化规范。它为Java开发人员提供了一种对象/关联映射工具来管理Java应用中的关系数据。
+
+Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/">
+        SpringBoot整合MyBatis
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverView​    在上篇文章中已经简单的写过 SpringBoot 整合 JDBCTemplate 了，但是现在的公司应该很少有用 JDBCTemplate，国内一般都是 MyBatis 或者是 Spring Data JPA，在本篇文章中就来整合一下 MyBatis。
+二、环境搭建新建 SpringBoot 项目，选上 Web、MySQL，在 pom.xml  中配置一下数据库...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-09</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2020/09/08/SpringBoot%E6%95%B4%E5%90%88JDBCTemplate/">
         SpringBoot整合JDBCTemplate
       </a>
@@ -829,107 +925,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/08/19/SpringBoot%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8/">
-        SpringBoot中自定义异常
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、正常出现异常Controller：
-12345678910@RestControllerpublic class ErrorController &#123;    @GetMapping(&quot;/diyError&quot;)    public String error() &#123;        int i = 2 / 0;        return &quot;diy...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-08-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/08/19/SpringBoot%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/08/18/SpringBoot%E6%95%B4%E5%90%88JSON/">
-        SpringBoot整合JSON
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、Jackson1. 环境搭建只要加入普通的 Web 依赖就行，为了方便依然引入 Lombok 和 热部署
-
-打开 Maven 依赖可以看见
-
-
-SpringBoot 自带的就是 jackson
-
-2. SpringBoot中使用2.1 建立实体类：
-12345678@Datapublic class User &#123;    private Integer id;    privat...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-08-18</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/08/18/SpringBoot%E6%95%B4%E5%90%88JSON/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1057,7 +1052,7 @@ SpringBoot 自带的就是 jackson
           <li><a class="flat-box"
             title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
             id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
-            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(21)</div></a></li>
+            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(23)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
