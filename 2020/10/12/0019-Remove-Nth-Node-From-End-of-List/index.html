@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -19,9 +17,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：Spring Boot - wangba&#39;s blogs</title>
+  <title>0019.Remove Nth Node From End of List - wangba&#39;s blogs</title>
+  
+    <meta name="keywords" content="Leetcode,Array,LinkedList">
   
 
+  
+    <meta name="description" content="一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !">
   
 
   <!-- feed -->
@@ -333,7 +335,7 @@
   
     
     
-        <div class='cover-wrapper  search' style="display: none;">
+        <div class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
           
@@ -414,8 +416,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">0019.Remove Nth Node From End of List</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -444,517 +446,219 @@
         
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-    
-      
-  <section class="post-list">
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/">
-        SpringBoot整合Spring Data JPA(一)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView
-JPA(Java Persistence API)是Sun官方提出的Java持久化规范。它为Java开发人员提供了一种对象/关联映射工具来管理Java应用中的关系数据。
 
-Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功...
-      
-    
-  </div>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
+  <div class="article-meta" id="top">
+    
+      
+
+  
+    <meting-js
+      mini='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      server='netease'
+      type='song'
+      id='606427'>
+    </meting-js>
+  
+
+
+    
+    
+    
+      <h1 class="title">
+        0019.Remove Nth Node From End of List
+      </h1>
+      <div class='new-meta-box'>
         
-        <time>2020-09-10</time>
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+    </a>
+  </div>
+
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月12日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="0019.Remove Nth Node From End of List" data-path="/2020/10/12/0019-Remove-Nth-Node-From-End-of-List/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <h2 id="19-删除链表的倒数第N个节点-Medium"><a href="#19-删除链表的倒数第N个节点-Medium" class="headerlink" title="19. 删除链表的倒数第N个节点 Medium"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第N个节点</a> <font color="#fd9016" size=5>Medium</font></h2><p>给定一个链表，删除链表的倒数第 <em>n</em> 个节点，并且返回链表的头结点。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n &#x3D; 2.</span><br><span class="line"></span><br><span class="line">当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明：</strong></p>
+<p>给定的 <em>n</em> 保证是有效的。</p>
+<p><strong>进阶：</strong></p>
+<p>你能尝试使用一趟扫描实现吗？</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>首先回忆一下如何删除一个结点，可以参考<a href="http://wangba.me/2020/10/03/LinkedList/">这个</a>，主要就是找到要删除前面的那个结点</p>
+<h3 id="思路一：暴力法"><a href="#思路一：暴力法" class="headerlink" title="思路一：暴力法"></a>思路一：暴力法</h3><p>直接两次遍历即可，第一遍找到这个链表的长度，第二遍只需要走链表长度减去这个**<em>n**</em>就行了</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    ListNode l = head;</span><br><span class="line">    <span class="keyword">while</span> (l != <span class="keyword">null</span>) &#123;</span><br><span class="line">        length++;</span><br><span class="line">        l = l.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (length == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    l = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> sub = length - n;</span><br><span class="line">    <span class="keyword">if</span> (sub == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (sub &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        l = l.next;</span><br><span class="line">        sub--;</span><br><span class="line">    &#125;</span><br><span class="line">    l.next = l.next.next;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>虽然遍历了两次，但是时间复杂度还是 O(n)，线性长度</p>
+<p>空间复杂度为 O(1)</p>
+</blockquote>
+<h3 id="思路二：相对位移法"><a href="#思路二：相对位移法" class="headerlink" title="思路二：相对位移法"></a>思路二：相对位移法</h3><p>这个思路也很简单，对比上面的思路好处是：只需要遍历一遍就行了</p>
+<p>双指针，让 A 指针先走 <strong><em>n</em></strong>步，随后再让 B 指针和 A 指针一起走，这样就会有长度为 n 的相对位移，直到让 A 指针走到终点，此时 B 指针也就距终点 n 的长度了</p>
+<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head, slow = head;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fast == <span class="keyword">null</span>) <span class="keyword">return</span> head.next;</span><br><span class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    slow.next = slow.next.next;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/09/10/SpringBoot%E6%95%B4%E5%90%88Spring-Data-JPA-%E4%B8%80/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/12/0019-Remove-Nth-Node-From-End-of-List/>http://wangba.me/2020/10/12/0019-Remove-Nth-Node-From-End-of-List/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-12T20:10:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月12日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/">
-        SpringBoot整合MyBatis
-      </a>
-    </h2>
-  
-  <div class='md'>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Array/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Array</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/LinkedList/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>LinkedList</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        一、OverView​    在上篇文章中已经简单的写过 SpringBoot 整合 JDBCTemplate 了，但是现在的公司应该很少有用 JDBCTemplate，国内一般都是 MyBatis 或者是 Spring Data JPA，在本篇文章中就来整合一下 MyBatis。
-二、环境搭建新建 SpringBoot 项目，选上 Web、MySQL，在 pom.xml  中配置一下数据库...
+    
+      
+    
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-09</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/09/SpringBoot%E6%95%B4%E5%90%88MyBatis/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/08/SpringBoot%E6%95%B4%E5%90%88JDBCTemplate/">
-        SpringBoot整合JDBCTemplate
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、环境搭建1. 引入依赖1234567891011121314151617181920212223242526272829303132333435363738// WEB&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-star...
-      
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-08</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2020/09/08/SpringBoot%E6%95%B4%E5%90%88JDBCTemplate/'>
-            阅读全文
-          </a>
-        </div>
+      
+        <a class='next' href='/2020/10/12/0160-Intersection-of-Two-Linked-Lists/'>
+          <p class='title'>0160. Intersection of Two Linked Lists<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>160. 相交链表  Easy编写一个程序，找到两个单链表相交的起始节点。
+如下面的两个链表：
+
+在节点 c1 开始相交。
+示例 1：
+
+123输入：intersectVal &#x3D; 8,...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/03/SpringBoot%E6%95%B4%E5%90%88AOP/">
-        SpringBoot整合AOP
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、背景​        在公司写业务的时候，都会有保存日志的操作，方便出错的时候进行排查；一般不仅仅在数据库中保存日志，
-也会在后端控制台打印一些需要的信息。在这里，一般使用 AOP 织入的方式将日志保存在数据库中，使用一些日
-志包将某些 Controller 层的信息打印在控制台。
-二、准备Entiy:1234567891011121314151617181920@Entity@Tabl...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-03</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/03/SpringBoot%E6%95%B4%E5%90%88AOP/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
-        SpringBoot中类型转换
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、问题如果前端传来一个日期参数，是用 String 类型的，我们如何在后端进行传参呢？
-也即如下这种情况：
-12345678@RestControllerpublic class HelloController &#123;    @GetMapping(&quot;/hello&quot;)    public void hello(Date date) &#123;        Sy...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/01/SpringBoot%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84/">
-        SpringBoot中的路径映射
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、在 SpringBoot中使用 SSM 框架中的映射写下如下的 Controller：
-123456789@Controllerpublic class HelloController &#123;    @RequestMapping(&quot;/hello&quot;)    public String hello() &#123;        return &quot;hell...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/01/SpringBoot%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/08/31/SpringBoot%E4%B8%AD%E7%9A%84Servlet%E3%80%81Filter%E3%80%81Listener/">
-        SpringBoot中的Servlet、Filter、Listener
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、Servlet12345678@WebServlet(urlPatterns = &quot;/MyServlet&quot;)public class MyServlet extends HttpServlet &#123;    @Override    protected void doGet(HttpServletRequest req, HttpServletResponse ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-08-31</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/08/31/SpringBoot%E4%B8%AD%E7%9A%84Servlet%E3%80%81Filter%E3%80%81Listener/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/08/22/SpringBoot%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/">
-        SpringBoot中定义系统启动任务
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、CommandLineRunner通过实现 CommandLineRunner 来定义启动任务：
-12345678@Component@Order(1)public class MyCommandLineRunner implements CommandLineRunner &#123;    @Override    public void run(String... args) th...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-08-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/08/22/SpringBoot%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/08/20/SpringBoot%E6%95%B4%E5%90%88%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8/">
-        SpringBoot整合过滤器和拦截器
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、过滤器新建如下的 Controller：
-123456789@RestControllerpublic class UserController &#123;    @GetMapping(&quot;user/&#123;id&#125;&quot;)    public void get(@PathVariable String id) &#123;        System.ou...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-08-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/08/20/SpringBoot%E6%95%B4%E5%90%88%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/08/20/SpringBoot%E4%B8%AD%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
-        SpringBoot中跨域问题
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、同源策略​        同源策略是由 Netscape 提出的一个著名的安全策略，它是浏览器最核心也最基本的安全功能，现在所有支持 JavaScript 的浏览器都会使用这个策略。所谓同源是指协议、域名以及端口要相同。同源策略是基于安全方面的考虑提出来的，这个策略本身没问题，但是我们在实际开发中，由于各种原因又经常有跨域的需求，传统的跨域方案是 JSONP，JSONP 虽然能解决跨域但...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-08-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/08/20/SpringBoot%E4%B8%AD%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/tags/Spring-Boot/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 3
-        </p>
-        
-          <a class="next" rel="next" href="/tags/Spring-Boot/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -962,141 +666,28 @@ Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的�
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://gitee.com/wonderfuleight/blogImg/raw/master//20200929133102.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">wangba's blogs</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:wonderfuleight@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/wonderfuleight"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="http://wonderfuleight.gitee.io/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
-            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
-            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(6)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
-            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
-            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(23)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
-            id="categoriesWangBa-s-CookBook"
-            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/"
-            id="categoriesE9878DE5ADA6E7AE97E6B395E7B3BBE58897"
-            ><div class='name'>重学算法系列</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#19-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9-Medium"><span class="toc-text">19. 删除链表的倒数第N个节点 Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E6%9A%B4%E5%8A%9B%E6%B3%95"><span class="toc-text">思路一：暴力法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-text">代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%EF%BC%9A%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%A7%BB%E6%B3%95"><span class="toc-text">思路二：相对位移法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="toc-text">代码：</span></a></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Algorithm/" style="font-size: 16.86px; color: #868686">Algorithm</a> <a href="/tags/Array/" style="font-size: 18.29px; color: #7c7c7c">Array</a> <a href="/tags/CookBook/" style="font-size: 14px; color: #999">CookBook</a> <a href="/tags/ES/" style="font-size: 14px; color: #999">ES</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Java/" style="font-size: 22.57px; color: #5f5f5f">Java</a> <a href="/tags/Leetcode/" style="font-size: 21.14px; color: #686868">Leetcode</a> <a href="/tags/Life/" style="font-size: 14px; color: #999">Life</a> <a href="/tags/LinkedList/" style="font-size: 16.86px; color: #868686">LinkedList</a> <a href="/tags/MySQL/" style="font-size: 16.86px; color: #868686">MySQL</a> <a href="/tags/NoSQL/" style="font-size: 14px; color: #999">NoSQL</a> <a href="/tags/SQL/" style="font-size: 15.43px; color: #8f8f8f">SQL</a> <a href="/tags/Session/" style="font-size: 14px; color: #999">Session</a> <a href="/tags/Sliding-Window/" style="font-size: 15.43px; color: #8f8f8f">Sliding Window</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 19.71px; color: #727272">Spring Security</a> <a href="/tags/String/" style="font-size: 15.43px; color: #8f8f8f">String</a> <a href="/tags/Two-pointer/" style="font-size: 14px; color: #999">Two pointer</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 14px; color: #999">注解</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
         

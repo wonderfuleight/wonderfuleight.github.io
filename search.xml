@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>0019.Remove Nth Node From End of List</title>
+      <link href="2020/10/12/0019-Remove-Nth-Node-From-End-of-List/"/>
+      <url>2020/10/12/0019-Remove-Nth-Node-From-End-of-List/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="19-删除链表的倒数第N个节点-Medium"><a href="#19-删除链表的倒数第N个节点-Medium" class="headerlink" title="19. 删除链表的倒数第N个节点 Medium"></a><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第N个节点</a> <font color="#fd9016" size=5>Medium</font></h2><p>给定一个链表，删除链表的倒数第 <em>n</em> 个节点，并且返回链表的头结点。</p><p><strong>示例：</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n &#x3D; 2.</span><br><span class="line"></span><br><span class="line">当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.</span><br></pre></td></tr></table></figure><p><strong>说明：</strong></p><p>给定的 <em>n</em> 保证是有效的。</p><p><strong>进阶：</strong></p><p>你能尝试使用一趟扫描实现吗？</p><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>首先回忆一下如何删除一个结点，可以参考<a href="http://wangba.me/2020/10/03/LinkedList/">这个</a>，主要就是找到要删除前面的那个结点</p><h3 id="思路一：暴力法"><a href="#思路一：暴力法" class="headerlink" title="思路一：暴力法"></a>思路一：暴力法</h3><p>直接两次遍历即可，第一遍找到这个链表的长度，第二遍只需要走链表长度减去这个**<em>n**</em>就行了</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    ListNode l = head;</span><br><span class="line">    <span class="keyword">while</span> (l != <span class="keyword">null</span>) &#123;</span><br><span class="line">        length++;</span><br><span class="line">        l = l.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (length == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    l = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> sub = length - n;</span><br><span class="line">    <span class="keyword">if</span> (sub == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (sub &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        l = l.next;</span><br><span class="line">        sub--;</span><br><span class="line">    &#125;</span><br><span class="line">    l.next = l.next.next;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>虽然遍历了两次，但是时间复杂度还是 O(n)，线性长度</p><p>空间复杂度为 O(1)</p></blockquote><h3 id="思路二：相对位移法"><a href="#思路二：相对位移法" class="headerlink" title="思路二：相对位移法"></a>思路二：相对位移法</h3><p>这个思路也很简单，对比上面的思路好处是：只需要遍历一遍就行了</p><p>双指针，让 A 指针先走 <strong><em>n</em></strong>步，随后再让 B 指针和 A 指针一起走，这样就会有长度为 n 的相对位移，直到让 A 指针走到终点，此时 B 指针也就距终点 n 的长度了</p><h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head, slow = head;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fast == <span class="keyword">null</span>) <span class="keyword">return</span> head.next;</span><br><span class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    slow.next = slow.next.next;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode真的难系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Array </tag>
+            
+            <tag> LinkedList </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>0160. Intersection of Two Linked Lists</title>
       <link href="2020/10/12/0160-Intersection-of-Two-Linked-Lists/"/>
       <url>2020/10/12/0160-Intersection-of-Two-Linked-Lists/</url>
