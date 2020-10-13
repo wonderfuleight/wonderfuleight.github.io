@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangba.me/2020/10/13/0021-Merge-Two-Sorted-Lists/</loc>
+    
+    <lastmod>2020-10-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangba.me/2020/10/13/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%83/</loc>
     
     <lastmod>2020-10-13</lastmod>
@@ -382,13 +389,6 @@
   </url>
   
   <url>
-    <loc>http://wangba.me/tags/Session/</loc>
-    <lastmod>2020-10-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://wangba.me/tags/Spring-Security/</loc>
     <lastmod>2020-10-13</lastmod>
     <changefreq>daily</changefreq>
@@ -397,6 +397,13 @@
   
   <url>
     <loc>http://wangba.me/tags/Algorithm/</loc>
+    <lastmod>2020-10-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wangba.me/tags/Session/</loc>
     <lastmod>2020-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

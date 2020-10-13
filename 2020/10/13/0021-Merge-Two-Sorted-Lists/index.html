@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -19,9 +17,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：LinkedList - wangba&#39;s blogs</title>
+  <title>0021. Merge Two Sorted Lists - wangba&#39;s blogs</title>
+  
+    <meta name="keywords" content="Leetcode,Array,LinkedList">
   
 
+  
+    <meta name="description" content="一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !">
   
 
   <!-- feed -->
@@ -333,7 +335,7 @@
   
     
     
-        <div class='cover-wrapper  search' style="display: none;">
+        <div class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
           
@@ -414,8 +416,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">0021. Merge Two Sorted Lists</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -444,212 +446,240 @@
         
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
+
+
+  
+  <div class="article-meta" id="top">
     
       
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+
   
+    <meting-js
+      mini='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      server='netease'
+      type='song'
+      id='4334701'>
+    </meting-js>
   
-  
-  
+
+
     
-    <h2 class="article-title" >
-      <a href="/2020/10/13/0021-Merge-Two-Sorted-Lists/">
+    
+    
+      <h1 class="title">
         0021. Merge Two Sorted Lists
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-10-13</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月13日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="0021. Merge Two Sorted Lists" data-path="/2020/10/13/0021-Merge-Two-Sorted-Lists/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <h2 id="21-Merge-Two-Sorted-Lists-Easy"><a href="#21-Merge-Two-Sorted-Lists-Easy" class="headerlink" title="21. Merge Two Sorted Lists Easy"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">21. Merge Two Sorted Lists</a> <font color="#49b666" size=5>Easy</font></h2><p>Merge two sorted linked lists and return it as a new <strong>sorted</strong> list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [1,2,4], l2 &#x3D; [1,3,4]</span><br><span class="line">Output: [1,1,2,3,4,4]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [], l2 &#x3D; []</span><br><span class="line">Output: []</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [], l2 &#x3D; [0]</span><br><span class="line">Output: [0]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in both lists is in the range <code>[0, 50]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li>Both <code>l1</code> and <code>l2</code> are sorted in <strong>non-decreasing</strong> order.</li>
+</ul>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：迭代法"><a href="#思路一：迭代法" class="headerlink" title="思路一：迭代法"></a>思路一：迭代法</h3><p>设置一个头结点，随后开始比较两个链表的结点值大小，具体逻辑可以将下面的图和代码逻辑联系起来：</p>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201013173857.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201013173857.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201013173854931"></p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 迭代法</span></span><br><span class="line">    <span class="comment">// 1 2 4     1 3 4</span></span><br><span class="line">    <span class="comment">// 1 1 2 3 4 4</span></span><br><span class="line">    ListNode temp = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">    ListNode res = temp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1.val &gt; l2.val) &#123;</span><br><span class="line">            temp.next = l2;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            temp.next = l1;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (l1 == <span class="keyword">null</span>) temp.next = l2;</span><br><span class="line">    <span class="keyword">if</span> (l2 == <span class="keyword">null</span>) temp.next = l1;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res.next;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(m + n)</p>
+<p>空间复杂度：O(1)</p>
+</blockquote>
+<h3 id="思路二：递归法"><a href="#思路二：递归法" class="headerlink" title="思路二：递归法"></a>思路二：递归法</h3><p>递归最重要的两个点：</p>
+<ul>
+<li>递归的出口，在本题里面就是当其中的一个链表为空，直接返回另外一个链表即可</li>
+<li>要进行递归，传入参数后的结果应该是已经确定的了，在这里就是链表已经排好序了</li>
+</ul>
+<p>举个例子：如果现在是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">链表la：1 -&gt; 3 -&gt; 5</span><br><span class="line"></span><br><span class="line">链表lb：2 -&gt; 4 -&gt; 6</span><br></pre></td></tr></table></figure>
+
+<p>进行第一次递归时：要比较 1 和 2 的大小，发现 1 &lt; 2，此时只需要将 1.next =  <strong>mergeTwoLists(3, 2)</strong> 就行了，不要去想 <strong>mergeTwoLists(3, 2)</strong> 怎么来的，要把它当作已经确定的值就行，而 <strong>mergeTwoLists(3, 2)</strong> 的值可以看作是下面这两个链表的进行 <strong>mergeTwoLists</strong> 的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">链表la：3 -&gt; 5</span><br><span class="line"></span><br><span class="line">链表lb：2 -&gt; 4 -&gt; 6</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 递归法</span></span><br><span class="line">    <span class="comment">// 递归的出口</span></span><br><span class="line">    <span class="keyword">if</span> (l1 == <span class="keyword">null</span>) <span class="keyword">return</span> l2;</span><br><span class="line">    <span class="keyword">if</span> (l2 == <span class="keyword">null</span>) <span class="keyword">return</span> l1;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (l1.val &gt; l2.val) &#123;</span><br><span class="line">        l2.next = mergeTwoLists(l1, l2.next);</span><br><span class="line">        <span class="keyword">return</span> l2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        l1.next = mergeTwoLists(l1.next, l2);</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(m + n)</p>
+<p>空间复杂度：O(m + n)</p>
+<ul>
+<li>由于递归是调用栈的，每递归一次需要一个栈帧</li>
+</ul>
+</blockquote>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/10/13/0021-Merge-Two-Sorted-Lists/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/13/0021-Merge-Two-Sorted-Lists/>http://wangba.me/2020/10/13/0021-Merge-Two-Sorted-Lists/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-13T20:29:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月13日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Array/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Array</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/LinkedList/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>LinkedList</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2020/10/12/0019-Remove-Nth-Node-From-End-of-List/">
-        0019.Remove Nth Node From End of List
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
     
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
+      
+    
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2020-10-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2020/10/12/0019-Remove-Nth-Node-From-End-of-List/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2020/10/13/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%83/'>
+          <p class='title'>SpringBoot整合Spring Security(七)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一、OverView​        这一小节整理一下前面几节的内容，主要完整的捋一遍 Spring Security 的登录过程。为了有一个 Architecture First  的印象，先...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/12/0160-Intersection-of-Two-Linked-Lists/">
-        0160. Intersection of Two Linked Lists
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/12/0160-Intersection-of-Two-Linked-Lists/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/09/0206-Reverse-Linked-List/">
-        0206. Reverse Linked List
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-09</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/09/0206-Reverse-Linked-List/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -657,141 +687,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://gitee.com/wonderfuleight/blogImg/raw/master//20200929133102.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">wangba's blogs</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:wonderfuleight@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/wonderfuleight"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="http://wonderfuleight.gitee.io/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
-            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
-            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
-            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
-            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(24)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
-            id="categoriesWangBa-s-CookBook"
-            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/"
-            id="categoriesE9878DE5ADA6E7AE97E6B395E7B3BBE58897"
-            ><div class='name'>重学算法系列</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-Merge-Two-Sorted-Lists-Easy"><span class="toc-text">21. Merge Two Sorted Lists Easy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-text">思路一：迭代法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-text">代码：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%EF%BC%9A%E9%80%92%E5%BD%92%E6%B3%95"><span class="toc-text">思路二：递归法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="toc-text">代码：</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Algorithm/" style="font-size: 16.5px; color: #888">Algorithm</a> <a href="/tags/Array/" style="font-size: 19px; color: #777">Array</a> <a href="/tags/CookBook/" style="font-size: 14px; color: #999">CookBook</a> <a href="/tags/ES/" style="font-size: 14px; color: #999">ES</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Java/" style="font-size: 22.75px; color: #5e5e5e">Java</a> <a href="/tags/Leetcode/" style="font-size: 21.5px; color: #666">Leetcode</a> <a href="/tags/Life/" style="font-size: 14px; color: #999">Life</a> <a href="/tags/LinkedList/" style="font-size: 17.75px; color: #808080">LinkedList</a> <a href="/tags/MySQL/" style="font-size: 16.5px; color: #888">MySQL</a> <a href="/tags/NoSQL/" style="font-size: 14px; color: #999">NoSQL</a> <a href="/tags/SQL/" style="font-size: 15.25px; color: #919191">SQL</a> <a href="/tags/Session/" style="font-size: 14px; color: #999">Session</a> <a href="/tags/Sliding-Window/" style="font-size: 15.25px; color: #919191">Sliding Window</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 20.25px; color: #6f6f6f">Spring Security</a> <a href="/tags/String/" style="font-size: 15.25px; color: #919191">String</a> <a href="/tags/Two-pointer/" style="font-size: 14px; color: #999">Two pointer</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 14px; color: #999">注解</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
         
