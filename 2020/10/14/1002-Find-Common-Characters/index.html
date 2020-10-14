@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -19,9 +17,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：Leetcode - wangba&#39;s blogs</title>
+  <title>1002. Find Common Characters - wangba&#39;s blogs</title>
+  
+    <meta name="keywords" content="Leetcode,LinkedList">
   
 
+  
+    <meta name="description" content="一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !">
   
 
   <!-- feed -->
@@ -333,7 +335,7 @@
   
     
     
-        <div class='cover-wrapper  search' style="display: none;">
+        <div class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
           
@@ -414,8 +416,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">1002. Find Common Characters</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -444,127 +446,222 @@
         
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
+
+
+  
+  <div class="article-meta" id="top">
     
       
-  <section class="post-list">
+
+  
+    <meting-js
+      mini='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      server='netease'
+      type='song'
+      id='1438161821'>
+    </meting-js>
+  
+
+
     
     
-      
+    
+      <h1 class="title">
+        1002. Find Common Characters
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/01/0003-Longest-Substring-Without-Repeating-Characters/">
-        0003.Longest Substring Without Repeating Characters
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-09-01</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月14日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="1002. Find Common Characters" data-path="/2020/10/14/1002-Find-Common-Characters/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <h4 id="1002-Find-Common-Characters-Easy"><a href="#1002-Find-Common-Characters-Easy" class="headerlink" title="1002. Find Common Characters Easy"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-common-characters/">1002. Find Common Characters</a> <font color="#49b666" size=5>Easy</font></h4><p>Given an array <code>A</code> of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list <strong>(including duplicates)</strong>. For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.</p>
+<p>You may return the answer in any order.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;bella&quot;,&quot;label&quot;,&quot;roller&quot;]</span><br><span class="line">Output: [&quot;e&quot;,&quot;l&quot;,&quot;l&quot;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;cool&quot;,&quot;lock&quot;,&quot;cook&quot;]</span><br><span class="line">Output: [&quot;c&quot;,&quot;o&quot;]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 100</code></li>
+<li><code>1 &lt;= A[i].length &lt;= 100</code></li>
+<li><code>A[i][j]</code> is a lowercase letter</li>
+</ol>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：暴力破解"><a href="#思路一：暴力破解" class="headerlink" title="思路一：暴力破解"></a>思路一：暴力破解</h3><p>仅供参考：</p>
+<ul>
+<li>找到长度最小的字符串，由于是考虑每一个字符串中重复的元素</li>
+<li>将这个字符串放到 map 中，map 中的值可以设为字符串数组长度</li>
+<li>依次遍历，如果重复就 -1 ，最后看 map 中的值是否变为 0</li>
+</ul>
+<h3 id="思路二：哈希"><a href="#思路二：哈希" class="headerlink" title="思路二：哈希"></a>思路二：哈希</h3><p>可以结合下面的图和代码进行理解</p>
+<ul>
+<li>由于都是小写字母，只需要使用容量为 26 的数组表示 26 位字母；</li>
+<li>第一个 26 位数组，将字符串数组的第一个字符串装下，重复的 + 1</li>
+<li>后面和第一个一样操作得到新的数组，比较其中的值，取<code>最小 </code>的即可，因为最小的那个才代表着它在自己的数组中重复了多少次，在所有的字符串中，它最多的字符重复 </li>
+<li>将结果放在第一个数组，继续比较</li>
+</ul>
+<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201014193842.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201014193842.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201014193840865"></p>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">commonChars</span><span class="params">(String[] A)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 哈希表</span></span><br><span class="line">    <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A[<span class="number">0</span>].length(); i++) &#123;</span><br><span class="line">        res[A[<span class="number">0</span>].charAt(i) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A[i].length(); j++) &#123;</span><br><span class="line">            temp[A[i].charAt(j) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">26</span>; j++) &#123;</span><br><span class="line">            res[j] = Math.min(res[j], temp[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (res[i] != <span class="number">0</span>) &#123;</span><br><span class="line">            ans.add(String.valueOf((<span class="keyword">char</span>)((i) + <span class="string">&#x27;a&#x27;</span>)));</span><br><span class="line">            res[i]--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/09/01/0003-Longest-Substring-Without-Repeating-Characters/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/14/1002-Find-Common-Characters/>http://wangba.me/2020/10/14/1002-Find-Common-Characters/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-14T19:51:39+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月14日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/LinkedList/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>LinkedList</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2020/08/31/0001-Two-Sum/">
-        0001.Two Sum
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
     
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
+      
+    
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2020-08-31</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2020/08/31/0001-Two-Sum/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2020/10/14/0023-Merge-k-Sorted-Lists/'>
+          <p class='title'>0023. Merge k Sorted Lists<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>23. Merge k Sorted Lists HardYou are given an array of k linked-lists lists, each linked-list is ...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/tags/Leetcode/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 2
-        </p>
-        
-      </div>
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -572,141 +669,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://gitee.com/wonderfuleight/blogImg/raw/master//20200929133102.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">wangba's blogs</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:wonderfuleight@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/wonderfuleight"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="http://wonderfuleight.gitee.io/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
-            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
-            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(9)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
-            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
-            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(24)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
-            id="categoriesWangBa-s-CookBook"
-            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/"
-            id="categoriesE9878DE5ADA6E7AE97E6B395E7B3BBE58897"
-            ><div class='name'>重学算法系列</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1002-Find-Common-Characters-Easy"><span class="toc-text">1002. Find Common Characters Easy</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3"><span class="toc-text">思路一：暴力破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%EF%BC%9A%E5%93%88%E5%B8%8C"><span class="toc-text">思路二：哈希</span></a>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Algorithm/" style="font-size: 16.5px; color: #888">Algorithm</a> <a href="/tags/Array/" style="font-size: 17.75px; color: #808080">Array</a> <a href="/tags/CookBook/" style="font-size: 14px; color: #999">CookBook</a> <a href="/tags/ES/" style="font-size: 14px; color: #999">ES</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Java/" style="font-size: 22.75px; color: #5e5e5e">Java</a> <a href="/tags/Leetcode/" style="font-size: 21.5px; color: #666">Leetcode</a> <a href="/tags/Life/" style="font-size: 14px; color: #999">Life</a> <a href="/tags/LinkedList/" style="font-size: 19px; color: #777">LinkedList</a> <a href="/tags/MySQL/" style="font-size: 16.5px; color: #888">MySQL</a> <a href="/tags/NoSQL/" style="font-size: 14px; color: #999">NoSQL</a> <a href="/tags/SQL/" style="font-size: 15.25px; color: #919191">SQL</a> <a href="/tags/Session/" style="font-size: 14px; color: #999">Session</a> <a href="/tags/Sliding-Window/" style="font-size: 15.25px; color: #919191">Sliding Window</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 20.25px; color: #6f6f6f">Spring Security</a> <a href="/tags/String/" style="font-size: 15.25px; color: #919191">String</a> <a href="/tags/Two-pointer/" style="font-size: 14px; color: #999">Two pointer</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 14px; color: #999">注解</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
         

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangba.me/2020/10/14/1002-Find-Common-Characters/</loc>
+    
+    <lastmod>2020-10-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangba.me/2020/10/14/0023-Merge-k-Sorted-Lists/</loc>
     
     <lastmod>2020-10-14</lastmod>
@@ -11,7 +18,7 @@
   <url>
     <loc>http://wangba.me/2020/10/13/0021-Merge-Two-Sorted-Lists/</loc>
     
-    <lastmod>2020-10-13</lastmod>
+    <lastmod>2020-10-14</lastmod>
     
   </url>
   
