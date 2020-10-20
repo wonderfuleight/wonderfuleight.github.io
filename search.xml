@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>0086. Partition List</title>
+      <link href="2020/10/20/0086-Partition-List/"/>
+      <url>2020/10/20/0086-Partition-List/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="86-Partition-List-Medium"><a href="#86-Partition-List-Medium" class="headerlink" title="86. Partition List Medium"></a><a href="https://leetcode-cn.com/problems/partition-list/">86. Partition List</a> Medium</h2><p>Given a linked list and a value <em>x</em>, partition it such that all nodes less than <em>x</em> come before nodes greater than or equal to <em>x</em>.</p><p>You should preserve the original relative order of the nodes in each of the two partitions.</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head &#x3D; 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x &#x3D; 3</span><br><span class="line">Output: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</span><br></pre></td></tr></table></figure><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：大小链表"><a href="#思路一：大小链表" class="headerlink" title="思路一：大小链表"></a>思路一：大小链表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">原链表：1 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2</span><br><span class="line"></span><br><span class="line">大链表：4 -&gt; 3 -&gt; 5</span><br><span class="line">小链表：1 -&gt; 2 -&gt; 2</span><br><span class="line"></span><br><span class="line">合并链表：1 -&gt; 2 -&gt; 2 -&gt; 4 -&gt; 3 -&gt; 5</span><br></pre></td></tr></table></figure><p><strong>代码：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">partition</span><span class="params">(ListNode head, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        Input: head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x = 3</span></span><br><span class="line"><span class="comment">//        Output: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</span></span><br><span class="line">        <span class="comment">// 小链表</span></span><br><span class="line">        ListNode min = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        ListNode l  = min;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 大链表</span></span><br><span class="line">        ListNode max = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        ListNode h = max;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (head.val &lt; x) &#123;</span><br><span class="line">                l.next = head;</span><br><span class="line">                l = l.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                h.next = head;</span><br><span class="line">                h = h.next;</span><br><span class="line">            &#125;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        h.next = <span class="keyword">null</span>;</span><br><span class="line">        l.next = max.next;</span><br><span class="line">        <span class="keyword">return</span> min.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><blockquote><p>时间复杂度：O(n)</p><p>空间复杂度：O()</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode真的难系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> LinkedList </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>0083. Remove Duplicates from Sorted List</title>
+      <link href="2020/10/19/0083-Remove-Duplicates-from-Sorted-List/"/>
+      <url>2020/10/19/0083-Remove-Duplicates-from-Sorted-List/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="83-Remove-Duplicates-from-Sorted-List-Easy"><a href="#83-Remove-Duplicates-from-Sorted-List-Easy" class="headerlink" title="83. Remove Duplicates from Sorted List Easy"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/">83. Remove Duplicates from Sorted List</a> <font color="#49b666" size=5>Easy</font></h2><p>Given a sorted linked list, delete all duplicates such that each element appear only <em>once</em>.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;1-&gt;2</span><br><span class="line">Output: 1-&gt;2</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;1-&gt;2-&gt;3-&gt;3</span><br><span class="line">Output: 1-&gt;2-&gt;3</span><br></pre></td></tr></table></figure><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：双指针"><a href="#思路一：双指针" class="headerlink" title="思路一：双指针"></a>思路一：双指针</h3><p>由于都是已经排好序的链表，相同的数都在一起，只要使用双指针：一个指向出现的第一个数，一个一直遍历到这个数结束即可</p><p><strong>代码：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    ListNode fast = head.next;</span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (slow.val == fast.val) &#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">            slow.next = fast;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode真的难系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> LinkedList </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>0025. Reverse Nodes in k-Group</title>
       <link href="2020/10/15/0025-Reverse-Nodes-in-k-Group/"/>
       <url>2020/10/15/0025-Reverse-Nodes-in-k-Group/</url>
