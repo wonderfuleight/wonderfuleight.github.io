@@ -461,6 +461,103 @@
   
     
     <h2 class="article-title" >
+      <a href="/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/">
+        SpringBoot整合Spring Security (二)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、Test环境与上一节的环境一致，这一节主要来进行自定义操作
+在 SecurityConfig  中重写这两个方法：
+12345678910111213141516@Overridepublic void configure(WebSecurity web) throws Exception &#123;    web.ignoring().antMatchers(&quot;/js/**...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-28</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/09/27/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%80/">
+        SpringBoot整合Spring Security (一)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        一、OverViewJava 中权限管理最常用的技术应该就是：Spring Security 和 Shiro。
+虽然 Shiro 用它轻量、简单、易于集成占据一席之地，但随着 SpringBoot 的流行，Spring Security 也跟着鸡犬升天，就目前的趋势来看，Spring Security 结合 Oauth2、JWT 等更加方便。
+这次先小试牛刀一下，快速入门……
+二、Envir...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-09-27</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/09/27/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%80/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2020/09/22/SpringBoot%E6%95%B4%E5%90%88Session/">
         SpringBoot整合Session
       </a>
@@ -912,99 +1009,6 @@ Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的�
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/04/0076-Minimum-Window-Substring/">
-        0076.Minimum Window Substring
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/04/0076-Minimum-Window-Substring/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/03/SpringBoot%E6%95%B4%E5%90%88AOP/">
-        SpringBoot整合AOP
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、背景​        在公司写业务的时候，都会有保存日志的操作，方便出错的时候进行排查；一般不仅仅在数据库中保存日志，
-也会在后端控制台打印一些需要的信息。在这里，一般使用 AOP 织入的方式将日志保存在数据库中，使用一些日
-志包将某些 Controller 层的信息打印在控制台。
-二、准备Entiy:1234567891011121314151617181920@Entity@Tabl...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-03</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/03/SpringBoot%E6%95%B4%E5%90%88AOP/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1125,7 +1129,7 @@ Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的�
           <li><a class="flat-box"
             title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
             id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
-            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(13)</div></a></li>
+            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(15)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
