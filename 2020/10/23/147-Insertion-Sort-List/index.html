@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -19,9 +17,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020 - wangba&#39;s blogs</title>
+  <title>147. Insertion Sort List - wangba&#39;s blogs</title>
+  
+    <meta name="keywords" content="Leetcode,LinkedList">
   
 
+  
+    <meta name="description" content="一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !">
   
 
   <!-- feed -->
@@ -333,7 +335,7 @@
   
     
     
-        <div class='cover-wrapper  search' style="display: none;">
+        <div class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
           
@@ -414,8 +416,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">147. Insertion Sort List</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -445,499 +447,220 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
       
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
+
+  
+    <meting-js
+      mini='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      server='netease'
+      type='song'
+      id='1299326404'>
+    </meting-js>
+  
+
+
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2020/10/23/147-Insertion-Sort-List/">
+      <h1 class="title">
         147. Insertion Sort List
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-10-23</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月23日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="147. Insertion Sort List" data-path="/2020/10/23/147-Insertion-Sort-List/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <h2 id="147-Insertion-Sort-List-Medium"><a href="#147-Insertion-Sort-List-Medium" class="headerlink" title="147. Insertion Sort List Medium"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/insertion-sort-list/">147. Insertion Sort List</a> <font color="#fd9016" size=5>Medium</font></h2><p>Sort a linked list using insertion sort.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" class="lazyload" data-srcset="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"><br>A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list.<br>With each iteration one element (red) is removed from the input data and inserted in-place into the sorted list</p>
+<p><strong>Algorithm of Insertion Sort:</strong></p>
+<ol>
+<li>Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list.</li>
+<li>At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there.</li>
+<li>It repeats until no input elements remain.</li>
+</ol>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 4-&gt;2-&gt;1-&gt;3</span><br><span class="line">Output: 1-&gt;2-&gt;3-&gt;4</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: -1-&gt;5-&gt;3-&gt;4-&gt;0</span><br><span class="line">Output: -1-&gt;0-&gt;3-&gt;4-&gt;5</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：插入排序"><a href="#思路一：插入排序" class="headerlink" title="思路一：插入排序"></a>思路一：插入排序</h3><p>按照插入排序的思想，要注意的点：</p>
+<ul>
+<li>不要断链</li>
+<li>每一次都是从头开始进行比较</li>
+</ul>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">    ListNode res = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    ListNode pre = res;</span><br><span class="line">    ListNode cur = head;</span><br><span class="line">    ListNode next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">        next = cur.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (pre.next != <span class="keyword">null</span> &amp;&amp; pre.next.val &lt; cur.val) &#123;</span><br><span class="line">            pre = pre.next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cur.next = pre.next;</span><br><span class="line">        pre.next = cur;</span><br><span class="line">        <span class="comment">// 从头开始</span></span><br><span class="line">        pre = res;</span><br><span class="line">        cur = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(n^2)</p>
+<p>空间复杂度：O(1)</p>
+</blockquote>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/10/23/147-Insertion-Sort-List/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/23/147-Insertion-Sort-List/>http://wangba.me/2020/10/23/147-Insertion-Sort-List/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-23T21:29:30+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月23日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/LinkedList/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>LinkedList</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2020/10/22/143-Reorder-List/">
-        143. Reorder List
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
     
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
+      
+    
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2020-10-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2020/10/22/143-Reorder-List/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2020/10/22/143-Reorder-List/'>
+          <p class='title'>143. Reorder List<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>143. Reorder List MediumGiven a singly linked list L: L0→L1→…→L**n-1→Ln,reorder it to: L0→L**n→L1...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/22/142-Linked-List-Cycle-II/">
-        142. Linked List Cycle II
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/22/142-Linked-List-Cycle-II/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/21/0092-Reverse-Linked-List-II/">
-        0092. Reverse Linked List II
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-21</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/21/0092-Reverse-Linked-List-II/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/20/0086-Partition-List/">
-        0086. Partition List
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/20/0086-Partition-List/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/19/0083-Remove-Duplicates-from-Sorted-List/">
-        0083. Remove Duplicates from Sorted List
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/19/0083-Remove-Duplicates-from-Sorted-List/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/15/0025-Reverse-Nodes-in-k-Group/">
-        0025. Reverse Nodes in k-Group
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/15/0025-Reverse-Nodes-in-k-Group/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/14/1002-Find-Common-Characters/">
-        1002. Find Common Characters
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/14/1002-Find-Common-Characters/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/14/0023-Merge-k-Sorted-Lists/">
-        0023. Merge k Sorted Lists
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-14</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/14/0023-Merge-k-Sorted-Lists/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/13/0021-Merge-Two-Sorted-Lists/">
-        0021. Merge Two Sorted Lists
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-13</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/13/0021-Merge-Two-Sorted-Lists/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 5
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2020/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -945,141 +668,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://gitee.com/wonderfuleight/blogImg/raw/master//20200929133102.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">wangba's blogs</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:wonderfuleight@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/wonderfuleight"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="http://wonderfuleight.gitee.io/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
-            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
-            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(16)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
-            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
-            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(24)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
-            id="categoriesWangBa-s-CookBook"
-            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/"
-            id="categoriesE9878DE5ADA6E7AE97E6B395E7B3BBE58897"
-            ><div class='name'>重学算法系列</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#147-Insertion-Sort-List-Medium"><span class="toc-text">147. Insertion Sort List Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">思路一：插入排序</span></a></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Algorithm/" style="font-size: 16.5px; color: #888">Algorithm</a> <a href="/tags/Array/" style="font-size: 17.75px; color: #808080">Array</a> <a href="/tags/CookBook/" style="font-size: 14px; color: #999">CookBook</a> <a href="/tags/ES/" style="font-size: 14px; color: #999">ES</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Java/" style="font-size: 21.5px; color: #666">Java</a> <a href="/tags/Leetcode/" style="font-size: 22.75px; color: #5e5e5e">Leetcode</a> <a href="/tags/Life/" style="font-size: 14px; color: #999">Life</a> <a href="/tags/LinkedList/" style="font-size: 20.25px; color: #6f6f6f">LinkedList</a> <a href="/tags/MySQL/" style="font-size: 16.5px; color: #888">MySQL</a> <a href="/tags/NoSQL/" style="font-size: 14px; color: #999">NoSQL</a> <a href="/tags/SQL/" style="font-size: 15.25px; color: #919191">SQL</a> <a href="/tags/Session/" style="font-size: 14px; color: #999">Session</a> <a href="/tags/Sliding-Window/" style="font-size: 15.25px; color: #919191">Sliding Window</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 19px; color: #777">Spring Security</a> <a href="/tags/String/" style="font-size: 15.25px; color: #919191">String</a> <a href="/tags/Two-pointer/" style="font-size: 14px; color: #999">Two pointer</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 14px; color: #999">注解</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
         
