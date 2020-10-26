@@ -17,7 +17,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>147. Insertion Sort List - wangba&#39;s blogs</title>
+  <title>148. SortList - wangba&#39;s blogs</title>
   
     <meta name="keywords" content="Leetcode,LinkedList">
   
@@ -417,7 +417,7 @@
  
 <div id="pjax-data" style="display: none"> 
   <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">147. Insertion Sort List</div> 
+  <div id="pjax-pageTitle">148. SortList</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -464,7 +464,7 @@
       order='list'
       server='netease'
       type='song'
-      id='1299326404'>
+      id='1422279179'>
     </meting-js>
   
 
@@ -473,7 +473,7 @@
     
     
       <h1 class="title">
-        147. Insertion Sort List
+        148. SortList
       </h1>
       <div class='new-meta-box'>
         
@@ -493,7 +493,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年10月23日</p>
+    <p>发布于：2020年10月26日</p>
   </a>
 </div>
 
@@ -504,7 +504,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="147. Insertion Sort List" data-path="/2020/10/23/147-Insertion-Sort-List/">
+      <div id="lc-pv" data-title="148. SortList" data-path="/2020/10/26/148-SortList/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -521,35 +521,44 @@
 
 
   
-  <h2 id="147-Insertion-Sort-List-Medium"><a href="#147-Insertion-Sort-List-Medium" class="headerlink" title="147. Insertion Sort List Medium"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/insertion-sort-list/">147. Insertion Sort List</a> <font color="#fd9016" size=5>Medium</font></h2><p>Sort a linked list using insertion sort.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" class="lazyload" data-srcset="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"><br>A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list.<br>With each iteration one element (red) is removed from the input data and inserted in-place into the sorted list</p>
-<p><strong>Algorithm of Insertion Sort:</strong></p>
-<ol>
-<li>Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list.</li>
-<li>At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there.</li>
-<li>It repeats until no input elements remain.</li>
-</ol>
+  <h2 id="148-Sort-List-Medium"><a href="#148-Sort-List-Medium" class="headerlink" title="148. Sort List Medium"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-list/">148. Sort List</a> <font color="#fd9016" size=5>Medium</font></h2><p>Given the <code>head</code> of a linked list, return <em>the list after sorting it in <strong>ascending order</strong></em>.</p>
+<p><strong>Follow up:</strong> Can you sort the linked list in <code>O(n logn)</code> time and <code>O(1)</code> memory (i.e. constant space)?</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 4-&gt;2-&gt;1-&gt;3</span><br><span class="line">Output: 1-&gt;2-&gt;3-&gt;4</span><br></pre></td></tr></table></figure>
+<p><img src="https://assets.leetcode.com/uploads/2020/09/14/sort_list_1.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2020/09/14/sort_list_1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head &#x3D; [4,2,1,3]</span><br><span class="line">Output: [1,2,3,4]</span><br></pre></td></tr></table></figure>
 
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: -1-&gt;5-&gt;3-&gt;4-&gt;0</span><br><span class="line">Output: -1-&gt;0-&gt;3-&gt;4-&gt;5</span><br></pre></td></tr></table></figure>
+<p><img src="https://assets.leetcode.com/uploads/2020/09/14/sort_list_2.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2020/09/14/sort_list_2.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head &#x3D; [-1,5,3,4,0]</span><br><span class="line">Output: [-1,0,3,4,5]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head &#x3D; []</span><br><span class="line">Output: []</span><br></pre></td></tr></table></figure>
 
 
 
-
-
-<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：插入排序"><a href="#思路一：插入排序" class="headerlink" title="思路一：插入排序"></a>思路一：插入排序</h3><p>按照插入排序的思想，要注意的点：</p>
+<p><strong>Constraints:</strong></p>
 <ul>
-<li>不要断链</li>
-<li>每一次都是从头开始进行比较</li>
+<li>The number of nodes in the list is in the range <code>[0, 5 * 104]</code>.</li>
+<li><code>-105 &lt;= Node.val &lt;= 105</code></li>
+</ul>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：递归法"><a href="#思路一：递归法" class="headerlink" title="思路一：递归法"></a>思路一：递归法</h3><ul>
+<li>归并排序</li>
+<li>找链表中点</li>
+<li>哨兵</li>
+</ul>
+<p>本题是一个无序链表的排序问题，要求是空间复杂度为 <code>O(nlogn)</code> ，那只能想到快速排序、归并排序、堆排序，快排上通过索引的，不适合用在链表中；堆排序新建结点中；这题可采用归并排序，在 <a href="http://wangba.me/2020/10/13/0021-Merge-Two-Sorted-Lists/">21题</a> 中介绍了合并两个有序列表，现在只是一个无序链表，没有条件创造条件：</p>
+<ul>
+<li>两个链表：找到链表中点，切断</li>
+<li>有序：一个无序链表切开后，变成了两个无序链表，再对每一个链表进行递归，当只有一个结点，自然就是有序的了</li>
 </ul>
 <p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">    ListNode res = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    ListNode pre = res;</span><br><span class="line">    ListNode cur = head;</span><br><span class="line">    ListNode next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">        next = cur.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (pre.next != <span class="keyword">null</span> &amp;&amp; pre.next.val &lt; cur.val) &#123;</span><br><span class="line">            pre = pre.next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cur.next = pre.next;</span><br><span class="line">        pre.next = cur;</span><br><span class="line">        <span class="comment">// 从头开始</span></span><br><span class="line">        pre = res;</span><br><span class="line">        cur = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">sortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode slow = head, fast = head, pre = head;</span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">        pre = slow;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    pre.next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> mergeTwoLists(sortList(head), sortList(slow));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    ListNode dummy = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">    ListNode cur = dummy;</span><br><span class="line">    <span class="keyword">while</span> (l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1.val &lt; l2.val) &#123;</span><br><span class="line">            cur.next = l1;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cur.next = l2;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        cur = cur.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (l1 != <span class="keyword">null</span>) cur.next = l1;</span><br><span class="line">    <span class="keyword">if</span> (l2 != <span class="keyword">null</span>) cur.next = l2;</span><br><span class="line">    <span class="keyword">return</span> dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <blockquote>
-<p>时间复杂度：O(n^2)</p>
-<p>空间复杂度：O(1)</p>
+<p>时间复杂度：O(nlogn)</p>
+<p>空间复杂度：O(1)   其实并不是 1 ，由于递归要调用栈</p>
 </blockquote>
 
   
@@ -568,7 +577,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://wangba.me/2020/10/23/147-Insertion-Sort-List/>http://wangba.me/2020/10/23/147-Insertion-Sort-List/</a></p>
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/26/148-SortList/>http://wangba.me/2020/10/26/148-SortList/</a></p>
               
             
           </blockquote>
@@ -585,10 +594,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-23T21:29:30+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-26T19:17:39+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年10月23日</p>
+    <p>更新于：2020年10月26日</p>
   </a>
 </div>
 
@@ -634,15 +643,11 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/10/26/148-SortList/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>148. SortList</p>
-          <p class='content'>148. Sort List MediumGiven the head of a linked list, return the list after sorting it in ascendi...</p>
-        </a>
       
-      
-        <a class='next' href='/2020/10/22/143-Reorder-List/'>
-          <p class='title'>143. Reorder List<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>143. Reorder List MediumGiven a singly linked list L: L0→L1→…→L**n-1→Ln,reorder it to: L0→L**n→L1...</p>
+        <a class='next' href='/2020/10/23/147-Insertion-Sort-List/'>
+          <p class='title'>147. Insertion Sort List<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>147. Insertion Sort List MediumSort a linked list using insertion sort.
+A graphical example of in...</p>
         </a>
       
     </div>
@@ -685,7 +690,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#147-Insertion-Sort-List-Medium"><span class="toc-text">147. Insertion Sort List Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">思路一：插入排序</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#148-Sort-List-Medium"><span class="toc-text">148. Sort List Medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E9%80%92%E5%BD%92%E6%B3%95"><span class="toc-text">思路一：递归法</span></a></li></ol></li></ol>
     </div>
   </section>
 
