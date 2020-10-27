@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -19,7 +17,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：LinkedList - wangba&#39;s blogs</title>
+  <title>Stack - wangba&#39;s blogs</title>
+  
+    <meta name="keywords" content="Leetcode,Algorithm">
   
 
   
@@ -333,7 +333,7 @@
   
     
     
-        <div class='cover-wrapper  search' style="display: none;">
+        <div class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
           
@@ -414,8 +414,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">Stack</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -444,215 +444,224 @@
         
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
+
+
+  
+  <div class="article-meta" id="top">
     
       
-  <section class="post-list">
+
+  
+    <meting-js
+      mini='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      server='netease'
+      type='song'
+      id='1433274684'>
+    </meting-js>
+  
+
+
     
     
-      
+    
+      <h1 class="title">
+        Stack
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/13/0021-Merge-Two-Sorted-Lists/">
-        0021. Merge Two Sorted Lists
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/">重学算法系列</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-10-13</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月27日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Stack" data-path="/2020/10/27/Stack/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <h2 id="一、OverView"><a href="#一、OverView" class="headerlink" title="一、OverView"></a>一、OverView</h2><p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201027195704.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201027195704.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201027195658275"></p>
+<p>快速预览：</p>
+<ul>
+<li>🐷：第一小节看一下栈的特性，为什么会有这种受限的数据结构的出现？</li>
+<li>🐢：第二小节看一下要实现一个栈，最基本需要什么操作？</li>
+<li>🐭：第三小节看一下栈的的应用，是不是这些应用驱动着栈的诞生</li>
+<li>🐦：最后一个小节还是老套路，简单的看一下 Java 中关于栈的 API</li>
+</ul>
+<h2 id="二、特性"><a href="#二、特性" class="headerlink" title="二、特性"></a>二、特性</h2><p>​        在前面已经介绍了数组和链表两种最基本的数据结构，可以说他俩就是整个数据结构与算法的基石。看一下栈的组成：</p>
+<img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201027201132.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201027201132.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201027201130766" style="zoom:67%;" />
+
+<p>那么它和其他线性表最大的区别在哪呢？毫无疑问：它只允许在<code>一端进行插入和删除</code></p>
+<p>或者说成 <code>先进后出、后进先出</code></p>
+<p>此时，小朋友，你是否有很多问号？为什么要有这种受限的数据结构，我用数组和链表不香吗？当然栈就是基于数组或链表实现的，但是在特定的需求下，栈就应用而生了。具体可以参考下面的栈的应用和 Java 中栈，就可以看到在某些情况下栈的优势、以及由于数组和链表暴露出太多的接口，而栈只需要其中的一小部分就可以了</p>
+<h2 id="三、实现栈"><a href="#三、实现栈" class="headerlink" title="三、实现栈"></a>三、实现栈</h2><p>我们在上面就提到了，栈既可以基于数组实现，也可以基于链表实现。栈最重要的两个操作：<code>入栈</code> 和 <code>出栈</code> </p>
+<h3 id="3-1-定容栈"><a href="#3-1-定容栈" class="headerlink" title="3.1 定容栈"></a>3.1 定容栈</h3><p>这是《算法》中文版中的译名，顾名思义就是容量固定的栈，基于数组并用 Java 代码来实现一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FixedCapacityStackOfString</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String[] items;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FixedCapacityStackOfString</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.items = <span class="keyword">new</span> String[n];</span><br><span class="line">        <span class="keyword">this</span>.count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.n = n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 入栈</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">push</span><span class="params">(String item)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (count == n) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        items[count] = item;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 出栈</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        String item = items[count - <span class="number">1</span>];</span><br><span class="line">        count--;</span><br><span class="line">        <span class="keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(1)</p>
+<p>空间复杂度：O(1)   不包含该栈本身，操作时的空间复杂度</p>
+</blockquote>
+<h3 id="3-2-扩容栈"><a href="#3-2-扩容栈" class="headerlink" title="3.2 扩容栈"></a>3.2 扩容栈</h3><p>在上面的定容栈中，是用一个固定大小的数组当成实现栈的结构，那么应该如何实现一个扩容栈呢？</p>
+<p>其实也很好实现，回忆一下动态数组的事项，是将数组进行扩容，然后将原来的数据 copy 进去就行了；那么用同样的方式对基于数组的栈进行扩容 (当然基于链表实现的栈就没有这一概念，理论上只要内存空间足够大，栈可以无限大)</p>
+<ul>
+<li>当栈满的时候，进行扩容：新建一个比现在大的数组</li>
+<li>将原来栈中的数据全部复制到新的数组中</li>
+</ul>
+<p>具体实现可以参考下面的第五小节</p>
+<h2 id="四、栈的应用"><a href="#四、栈的应用" class="headerlink" title="四、栈的应用"></a>四、栈的应用</h2><h3 id="4-1-撤销操作"><a href="#4-1-撤销操作" class="headerlink" title="4.1 撤销操作"></a>4.1 撤销操作</h3><p>​        如果你经常使用 command + Z 或者 ctrl + Z，你可能会非常理解这个操作：当我们复制或者修改了一个文件，我们想把它恢复成复制或修改之前的一样的状态，只需要按上面的快捷键就行了，仔细想一下是否有栈的影子在里面</p>
+<img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201027215546.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201027215546.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201027215543027" style="zoom:80%;" />
+
+<p>就如同上面这个例子：我们写到了 wangba，随后又不想要 wangba 了，此时进行撤销操作，只需要将栈中的 wangba pop 就可以了，有的还有前进功能，此时只需要将其 push 进来即可</p>
+<h3 id="4-2-系统调用"><a href="#4-2-系统调用" class="headerlink" title="4.2 系统调用"></a>4.2 系统调用</h3><h3 id="4-3-表达式求值"><a href="#4-3-表达式求值" class="headerlink" title="4.3 表达式求值"></a>4.3 表达式求值</h3><h3 id="4-4-括号匹配"><a href="#4-4-括号匹配" class="headerlink" title="4.4 括号匹配"></a>4.4 括号匹配</h3><h2 id="五、Java中的栈"><a href="#五、Java中的栈" class="headerlink" title="五、Java中的栈"></a>五、Java中的栈</h2>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/10/13/0021-Merge-Two-Sorted-Lists/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/27/Stack/>http://wangba.me/2020/10/27/Stack/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-27T22:03:19+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月27日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Algorithm/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Algorithm</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2020/10/12/0019-Remove-Nth-Node-From-End-of-List/">
-        0019.Remove Nth Node From End of List
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
     
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
+      
+    
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2020-10-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2020/10/12/0019-Remove-Nth-Node-From-End-of-List/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2020/10/26/148-SortList/'>
+          <p class='title'>148. SortList<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>148. Sort List MediumGiven the head of a linked list, return the list after sorting it in ascendi...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/12/0160-Intersection-of-Two-Linked-Lists/">
-        0160. Intersection of Two Linked Lists
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/12/0160-Intersection-of-Two-Linked-Lists/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/09/0206-Reverse-Linked-List/">
-        0206. Reverse Linked List
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-09</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/09/0206-Reverse-Linked-List/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/tags/LinkedList/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 2
-        </p>
-        
-      </div>
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -660,141 +669,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://gitee.com/wonderfuleight/blogImg/raw/master//20200929133102.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">wangba's blogs</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:wonderfuleight@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/wonderfuleight"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="http://wonderfuleight.gitee.io/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
-            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
-            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(17)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
-            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
-            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(24)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
-            id="categoriesWangBa-s-CookBook"
-            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/"
-            id="categoriesE9878DE5ADA6E7AE97E6B395E7B3BBE58897"
-            ><div class='name'>重学算法系列</div><div class='badge'>(4)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81OverView"><span class="toc-text">一、OverView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E6%80%A7"><span class="toc-text">二、特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E7%8E%B0%E6%A0%88"><span class="toc-text">三、实现栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%AE%9A%E5%AE%B9%E6%A0%88"><span class="toc-text">3.1 定容栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%89%A9%E5%AE%B9%E6%A0%88"><span class="toc-text">3.2 扩容栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">四、栈的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C"><span class="toc-text">4.1 撤销操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="toc-text">4.2 系统调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="toc-text">4.3 表达式求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D"><span class="toc-text">4.4 括号匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Java%E4%B8%AD%E7%9A%84%E6%A0%88"><span class="toc-text">五、Java中的栈</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Algorithm/" style="font-size: 17.33px; color: #828282">Algorithm</a> <a href="/tags/Array/" style="font-size: 18.44px; color: #7b7b7b">Array</a> <a href="/tags/CookBook/" style="font-size: 14px; color: #999">CookBook</a> <a href="/tags/ES/" style="font-size: 14px; color: #999">ES</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Java/" style="font-size: 21.78px; color: #646464">Java</a> <a href="/tags/Leetcode/" style="font-size: 22.89px; color: #5d5d5d">Leetcode</a> <a href="/tags/Life/" style="font-size: 14px; color: #999">Life</a> <a href="/tags/LinkedList/" style="font-size: 20.67px; color: #6c6c6c">LinkedList</a> <a href="/tags/MySQL/" style="font-size: 16.22px; color: #8a8a8a">MySQL</a> <a href="/tags/NoSQL/" style="font-size: 14px; color: #999">NoSQL</a> <a href="/tags/SQL/" style="font-size: 15.11px; color: #919191">SQL</a> <a href="/tags/Session/" style="font-size: 14px; color: #999">Session</a> <a href="/tags/Sliding-Window/" style="font-size: 15.11px; color: #919191">Sliding Window</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 19.56px; color: #737373">Spring Security</a> <a href="/tags/String/" style="font-size: 15.11px; color: #919191">String</a> <a href="/tags/Two-pointer/" style="font-size: 14px; color: #999">Two pointer</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 14px; color: #999">注解</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
         
