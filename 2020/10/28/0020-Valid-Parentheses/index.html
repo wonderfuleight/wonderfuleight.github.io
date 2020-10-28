@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -19,9 +17,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020 - wangba&#39;s blogs</title>
+  <title>0020. Valid Parentheses - wangba&#39;s blogs</title>
+  
+    <meta name="keywords" content="Leetcode,LinkedList">
   
 
+  
+    <meta name="description" content="一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !">
   
 
   <!-- feed -->
@@ -333,7 +335,7 @@
   
     
     
-        <div class='cover-wrapper  search' style="display: none;">
+        <div class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
           
@@ -414,8 +416,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">0020. Valid Parentheses</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -445,623 +447,241 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
       
+
+  
+    <meting-js
+      mini='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      server='netease'
+      type='song'
+      id='1409369220'>
+    </meting-js>
+  
+
+
+    
+    
+    
+      <h1 class="title">
+        0020. Valid Parentheses
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/09/0206-Reverse-Linked-List/">
-        0206. Reverse Linked List
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>一天一道力扣题，嗤之以鼻，半信半疑，百感交集，关门大吉，skr skr ! ! !</p>
-    
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2020-10-09</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月28日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/">LeetCode真的难系列</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="0020. Valid Parentheses" data-path="/2020/10/28/0020-Valid-Parentheses/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <h2 id="20-Valid-Parentheses-Easy"><a href="#20-Valid-Parentheses-Easy" class="headerlink" title="20. Valid Parentheses Easy"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">20. Valid Parentheses</a> <font color="#49b666" size=5>Easy</font></h2><p>Given a string <code>s</code> containing just the characters <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;&#123;&#39;</code>, <code>&#39;&#125;&#39;</code>, <code>&#39;[&#39;</code> and <code>&#39;]&#39;</code>, determine if the input string is valid.</p>
+<p>An input string is valid if:</p>
+<ol>
+<li>Open brackets must be closed by the same type of brackets.</li>
+<li>Open brackets must be closed in the correct order.</li>
+</ol>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;()&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;(]&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;([)]&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;&#123;[]&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 104</code></li>
+<li><code>s</code> consists of parentheses only <code>&#39;()[]&#123;&#125;&#39;</code>.</li>
+</ul>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><h3 id="思路一：栈"><a href="#思路一：栈" class="headerlink" title="思路一：栈"></a>思路一：栈</h3><p>在栈的那一节中，就提及到了栈的其中一个应用就是括号匹配，大致思路如下：</p>
+<p>遇到 <code>(</code>、 <code>&#123;</code>、 <code>[</code> 这三种左括号，直接让它入栈，直到出现 <code>）</code>、 <code>&#125;</code>、 <code>]</code> ，首先判断栈是否为空或者栈顶的元素是否对应，如果对应，那么让它出栈，继续上述操作即可</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">        <span class="keyword">char</span> temp = s.charAt(i);</span><br><span class="line">        <span class="keyword">if</span> (temp != <span class="string">&#x27;)&#x27;</span> &amp;&amp; temp != <span class="string">&#x27;]&#x27;</span> &amp;&amp; temp != <span class="string">&#x27;&#125;&#x27;</span>) &#123;</span><br><span class="line">            stack.push(s.charAt(i));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp == <span class="string">&#x27;)&#x27;</span> &amp;&amp; !stack.isEmpty() &amp;&amp; stack.peek() == <span class="string">&#x27;(&#x27;</span> ||</span><br><span class="line">                temp == <span class="string">&#x27;]&#x27;</span> &amp;&amp; !stack.isEmpty() &amp;&amp; stack.peek() == <span class="string">&#x27;[&#x27;</span> ||</span><br><span class="line">                temp == <span class="string">&#x27;&#125;&#x27;</span> &amp;&amp; !stack.isEmpty() &amp;&amp; stack.peek() == <span class="string">&#x27;&#123;&#x27;</span>) &#123;</span><br><span class="line">            stack.pop();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(n)</p>
+</blockquote>
+<p>还看到了一种反向写法</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s.isEmpty()) &#123; <span class="keyword">return</span> <span class="keyword">true</span>; &#125;</span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> c:s.toCharArray())&#123;</span><br><span class="line">        <span class="keyword">if</span>(c == <span class="string">&#x27;(&#x27;</span>) &#123; stack.push(<span class="string">&#x27;)&#x27;</span>); &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">&#x27;[&#x27;</span>) &#123; stack.push(<span class="string">&#x27;]&#x27;</span>); &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">&#x27;&#123;&#x27;</span>) &#123; stack.push(<span class="string">&#x27;&#125;&#x27;</span>); &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(stack.isEmpty() || stack.pop() != c)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/10/09/0206-Reverse-Linked-List/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://wangba.me/2020/10/28/0020-Valid-Parentheses/>http://wangba.me/2020/10/28/0020-Valid-Parentheses/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-28T21:46:22+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月28日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/03/LinkedList/">
-        LinkedList
-      </a>
-    </h2>
-  
-  <div class='md'>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Leetcode/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/LinkedList/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>LinkedList</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        一、OverView
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/10/28/0042-Trapping-Rain-Water/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>0042. Trapping Rain Water</p>
+          <p class='content'>42. Trapping Rain Water HardGiven n non-negative integers representing an elevation map where the...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/10/27/Stack/'>
+          <p class='title'>Stack<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一、OverView
 快速预览：
 
-首先要和上一节的数组进行横向对比，来看一下链表独有的特性
-第二小节会介绍一下常见的几种链表，以及为什么要衍生出这些链表
-第三小节主要关注于链表的基操，(勿6) 以及在链表中的一些注意事项，如何保持链表不断链，为什么要引入哨兵
-最后一个小节主要结合 Java 中的链表 LinkedList 来加深对链表的理解
-
-二、特性在上一节中已经介绍过数组了，可以将数组...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-03</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/">重学算法系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/03/LinkedList/'>
-            阅读全文
-          </a>
-        </div>
+🐷：第一小节看一下栈的特性，为什么会有这种受限的数据结构的出现？
+🐢：第二小节看一下要实现一个栈，最基本需要什么操作？
+🐭：第三小节看一下栈的的应用，是...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/02/Array/">
-        Array
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView思维导图：
-        
-二、特性数组应该是所有程序员中最熟悉的数据结构了，如果你简单的回忆一下数组的具体含义，你可以得到已经几个重要的结论：
+  </article>
 
-🐷 线性结构
-🐢 连续内存
-🐭 存储相同类型
 
-2.1 线性结构顾名思义，线性结构就是这个结构像线性一样，而非是其它结构，这样说的确有点抽象，可以从下面几个例子来看一下：
 
 
-注：
 
-这里的 Array 是使用 Jav...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/">重学算法系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/02/Array/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/01/Algorithm/">
-        Algorithm
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        ​            最近实习后发现自己的算法能力急剧下降，CRUD 只是下限，算法才是上限，决定重新开一个系列，将数据结构与算法重新学一遍。这次主要参考的课程是《数据结构与算法之美》和《算法面试通关40讲》。这里就不像《算法导论》那样比较理论化，应该会更偏向于《算法》这本书的类型。
-可以看到下面这些有趣的点：
-
-🐷 尽量利用图 + 文字，清晰的表达意思
-🐢 一定要结合 Leetco...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-10-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/">重学算法系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/01/Algorithm/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/">
-        SpringBoot整合Spring Security (三)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView​        在前后端不分离时代，可能使用的就是上一节中这种方法；在现在这种前后端分离遍地走的情况下，已经不再推荐使用传统的 session ，而是使用现在比较流行的 JWT 这种 token 的方式解决
-​        对比分析一下：
-
-
-
-
-有状态登录
-无状态登录
-
-
-
-定义
-服务端需要记录每次会话的客户端信息，从而识别客户端身份，根据用户身份进行请求的处理
-服...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-30</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/30/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%89/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/">
-        SpringBoot整合Spring Security (二)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、Test环境与上一节的环境一致，这一节主要来进行自定义操作
-在 SecurityConfig  中重写这两个方法：
-12345678910111213141516@Overridepublic void configure(WebSecurity web) throws Exception &#123;    web.ignoring().antMatchers(&quot;/js/**...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/28/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%BA%8C/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/27/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%80/">
-        SpringBoot整合Spring Security (一)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverViewJava 中权限管理最常用的技术应该就是：Spring Security 和 Shiro。
-虽然 Shiro 用它轻量、简单、易于集成占据一席之地，但随着 SpringBoot 的流行，Spring Security 也跟着鸡犬升天，就目前的趋势来看，Spring Security 结合 Oauth2、JWT 等更加方便。
-这次先小试牛刀一下，快速入门……
-二、Envir...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/27/SpringBoot%E6%95%B4%E5%90%88Spring-Security-%E4%B8%80/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/22/SpringBoot%E6%95%B4%E5%90%88Session/">
-        SpringBoot整合Session
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView
-Spring Session has the simple goal of free up session management from the limitations of the HTTP session stored in the server.
-The solution makes it easy to share session data between s...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/22/SpringBoot%E6%95%B4%E5%90%88Session/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/16/SpringBoot%E6%95%B4%E5%90%88Redis/">
-        SpringBoot整合Redis
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一、OverView面试官：redis 知道吗
-🐢：不知道
-面试官：你回去等通知吧
-
-Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。在2013年5月之前，其开发由VMware赞助。https://zh.wikip...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/16/SpringBoot%E6%95%B4%E5%90%88Redis/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/15/%E9%93%81%E6%B0%8F%E7%8E%8B%E6%9C%9D%E6%BB%A1%E6%B1%89%E5%85%A8%E5%B8%AD-919/">
-        铁氏王朝满汉全席 919
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        919 铁氏王朝满汉全席 v1.3
-
-清蒸大闸蟹  5只
-材料：
-
-
-
-
-
-
-
-
-
-阳澄湖大闸蟹
-生姜
-
-
-蒜瓣
-香葱
-
-
-紫苏
-生抽
-
-
-香醋
-料酒
-
-
-香油
-鸡精
-
-
-糖
-
-
-
-可乐鸡翅
-材料：
-
-
-
-
-鸡翅10个
-可乐300毫升
-
-
-
-老抽1勺
-盐，鸡精适量
-
-
-葱姜，八角适量
-
-
-
-糖醋排骨
-材料：
-
-
-
-
-猪肋排500克
-葱适量
-
-
-
-姜适量
-八角2个
-
-
-老抽2勺
-生抽2勺
-
-
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/WangBa-s-CookBook/">WangBa's CookBook</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/09/15/%E9%93%81%E6%B0%8F%E7%8E%8B%E6%9C%9D%E6%BB%A1%E6%B1%89%E5%85%A8%E5%B8%AD-919/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2020/page/2/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          3 / 5
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2020/page/4/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
-
-
-	
 </div>
 <aside class='l_side'>
   
@@ -1069,141 +689,28 @@ Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://gitee.com/wonderfuleight/blogImg/raw/master//20200929133102.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">wangba's blogs</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:wonderfuleight@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/wonderfuleight"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="http://wonderfuleight.gitee.io/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/" href="/categories/LeetCode%E7%9C%9F%E7%9A%84%E9%9A%BE%E7%B3%BB%E5%88%97/"
-            id="categoriesLeetCodeE79C9FE79A84E99ABEE7B3BBE58897"
-            ><div class='name'>LeetCode真的难系列</div><div class='badge'>(19)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/"
-            id="categoriesSpring-BootE79C9FE79A84E9A699E7B3BBE58897"
-            ><div class='name'>Spring Boot真的香系列</div><div class='badge'>(24)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/WangBa-s-CookBook/" href="/categories/WangBa-s-CookBook/"
-            id="categoriesWangBa-s-CookBook"
-            ><div class='name'>WangBa's CookBook</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/" href="/categories/%E9%87%8D%E5%AD%A6%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/"
-            id="categoriesE9878DE5ADA6E7AE97E6B395E7B3BBE58897"
-            ><div class='name'>重学算法系列</div><div class='badge'>(4)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#20-Valid-Parentheses-Easy"><span class="toc-text">20. Valid Parentheses Easy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80%EF%BC%9A%E6%A0%88"><span class="toc-text">思路一：栈</span></a></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Algorithm/" style="font-size: 17.33px; color: #828282">Algorithm</a> <a href="/tags/Array/" style="font-size: 18.44px; color: #7b7b7b">Array</a> <a href="/tags/CookBook/" style="font-size: 14px; color: #999">CookBook</a> <a href="/tags/ES/" style="font-size: 14px; color: #999">ES</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Java/" style="font-size: 20.67px; color: #6c6c6c">Java</a> <a href="/tags/Leetcode/" style="font-size: 22.89px; color: #5d5d5d">Leetcode</a> <a href="/tags/Life/" style="font-size: 14px; color: #999">Life</a> <a href="/tags/LinkedList/" style="font-size: 21.78px; color: #646464">LinkedList</a> <a href="/tags/MySQL/" style="font-size: 16.22px; color: #8a8a8a">MySQL</a> <a href="/tags/NoSQL/" style="font-size: 14px; color: #999">NoSQL</a> <a href="/tags/SQL/" style="font-size: 15.11px; color: #919191">SQL</a> <a href="/tags/Session/" style="font-size: 14px; color: #999">Session</a> <a href="/tags/Sliding-Window/" style="font-size: 15.11px; color: #919191">Sliding Window</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Security/" style="font-size: 19.56px; color: #737373">Spring Security</a> <a href="/tags/String/" style="font-size: 15.11px; color: #919191">String</a> <a href="/tags/Two-pointer/" style="font-size: 14px; color: #999">Two pointer</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 14px; color: #999">注解</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
         
