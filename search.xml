@@ -710,7 +710,7 @@
       <link href="2020/10/01/Algorithm/"/>
       <url>2020/10/01/Algorithm/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>​            最近实习后发现自己的算法能力急剧下降，<del>CRUD 只是下限，算法才是上限</del>，决定重新开一个系列，将数据结构与算法重新学一遍。这次主要参考的课程是《数据结构与算法之美》和《算法面试通关40讲》。这里就不像《算法导论》那样比较理论化，应该会更偏向于《算法》这本书的类型。</p><p>可以看到下面这些有趣的点：</p><ul><li>🐷 尽量利用图 + 文字，清晰的表达意思</li><li>🐢 一定要结合 Leetcode 上的题目</li><li>🐭 尽量介绍一些<del>没用</del>有趣的小 Tips</li><li>🐦 使用 Java 来实现所有的算法</li></ul>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>​            最近实习后发现自己的算法能力急剧下降，<del>CRUD 只是下限，算法才是上限</del>，决定重新开一个系列，将数据结构与算法重新学一遍。这次主要参考的课程是《数据结构与算法之美》和《算法面试通关40讲》。这里就不像《算法导论》那样比较理论化，应该会更偏向于《算法》这本书的类型。</p><p>可以看到下面这些有趣的点：</p><ul><li>🐷 尽量利用图 + 文字，清晰的表达意思</li><li>🐢 一定要结合 Leetcode 上的题目</li><li>🐭 尽量介绍一些<del>没用</del>有趣的小 Tips</li><li>🐦 使用 Java 来实现所有的算法</li></ul><p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201123141316.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201123141316.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201123141309869"></p>]]></content>
       
       
       <categories>
