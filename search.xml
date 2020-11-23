@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Stack--Monotonic Stack</title>
+      <link href="2020/11/23/Stack-Monotonic-Stack/"/>
+      <url>2020/11/23/Stack-Monotonic-Stack/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、OverView"><a href="#一、OverView" class="headerlink" title="一、OverView"></a>一、OverView</h2><p>在前面已经提及过 <a href="http://wangba.me/2020/10/27/Stack/">栈</a> 这个数据结构，在 LeetCode 中有考察过这样一种栈操作：单调栈。</p><p>顾名思义，这是在栈的基础上达到单调递增或单调递减的效果。</p><p>大概的过程如下：</p><ul><li><p>如果想达到递增的效果：</p><ul><li>进栈：首先要比较与栈顶的大小，如果比栈顶元素大，那么直接放在栈顶即可；否则要将栈顶元素出栈，然后将这个元素与栈顶元素进行比较</li><li>出栈：直接出栈即可</li></ul></li><li><p>如果想达到递减的效果：</p><ul><li>进栈：首先要比较与栈顶的大小，如果比栈顶元素小，那么直接放在栈顶即可；否则要将栈顶元素出栈，然后将这个元素与栈顶元素进行比较</li><li>出栈：直接出栈即可</li></ul></li></ul><h2 id="二、Example"><a href="#二、Example" class="headerlink" title="二、Example"></a>二、Example</h2><p>假如有下面的例子：</p><p>有一组数为：</p><blockquote><p>1，4，2，5，7，6，8</p></blockquote><p>现在要得到一个单调递增栈，过程如下：</p><table><thead><tr><th>Step</th><th>Op</th><th>Stack</th></tr></thead><tbody><tr><td>1</td><td>1  push</td><td>1</td></tr><tr><td>2</td><td>4  push</td><td>1  4</td></tr><tr><td>3</td><td>4 pop  |  2  push</td><td>1  2</td></tr><tr><td>4</td><td>5  push</td><td>1  2  5</td></tr><tr><td>5</td><td>7 push</td><td>1  2  5  7</td></tr><tr><td>6</td><td>7  pop  |  6  push</td><td>1  2  5  6</td></tr><tr><td>7</td><td>8  push</td><td>1  2  5  6  8</td></tr></tbody></table><h2 id="三、LeetCode-496"><a href="#三、LeetCode-496" class="headerlink" title="三、LeetCode 496"></a>三、LeetCode 496</h2><p>看一个典型例子 <a href="https://leetcode-cn.com/problems/next-greater-element-i/">LeetCode 0496</a> :</p><p>题意：给定两个 没有重复元素 的数组 nums1 和 nums2 ，其中nums1 是 nums2 的子集。找到 nums1 中每个元素在 nums2 中的下一个比其大的值。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 &#x3D; [4,1,2], nums2 &#x3D; [1,3,4,2].</span><br><span class="line">Output: [-1,3,-1]</span><br></pre></td></tr></table></figure><p>分析：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElement(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[nums1.length];</span><br><span class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i : nums2) &#123;</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; stack.peek() &lt; i) &#123;</span><br><span class="line">            map.put(stack.peek(), i);</span><br><span class="line">            stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums1.length; i++) &#123;</span><br><span class="line">        res[i] = map.get(nums1[i]) != <span class="keyword">null</span> ? map.get(nums1[i]) : -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 重学算法系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Algorithm </tag>
+            
+            <tag> Stack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>0084. Largest Rectangle in Histogram</title>
       <link href="2020/11/02/0084-Largest-Rectangle-in-Histogram/"/>
       <url>2020/11/02/0084-Largest-Rectangle-in-Histogram/</url>
