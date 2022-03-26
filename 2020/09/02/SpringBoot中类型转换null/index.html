@@ -17,9 +17,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>something need to learn or write - wangba&#39;s blogs</title>
+  <title>SpringBoot中类型转换 - wangba&#39;s blogs</title>
   
-    <meta name="keywords" content="Life">
+    <meta name="keywords" content="Spring Boot,Java">
   
 
   
@@ -335,7 +335,7 @@
     
         <div class='cover-wrapper post search' style="display: none;">
           
-            <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
+            <div class='cover-bg lazyload placeholder' data-bg="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/Pulsefire%20Ezreal%20Minimalistic.jpg"></div>
           
           <div class='cover-body'>
   <div class='top'>
@@ -415,7 +415,7 @@
  
 <div id="pjax-data" style="display: none"> 
   <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">something need to learn or write</div> 
+  <div id="pjax-pageTitle">SpringBoot中类型转换</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -452,31 +452,22 @@
   
   <div class="article-meta" id="top">
     
-      
-
-  
-    <meting-js
-      mini='true'
-      volume='0.7'
-      loop='all'
-      order='list'
-      server='netease'
-      type='song'
-      id='620450'>
-    </meting-js>
-  
-
-
-    
     
     
       <h1 class="title">
-        something need to learn or write
+        SpringBoot中类型转换
       </h1>
       <div class='new-meta-box'>
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Spring-Boot%E7%9C%9F%E7%9A%84%E9%A6%99%E7%B3%BB%E5%88%97/">Spring Boot真的香系列</a>
+    </a>
+  </div>
+
 
           
         
@@ -484,7 +475,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年10月29日</p>
+    <p>发布于：2020年9月2日</p>
   </a>
 </div>
 
@@ -495,7 +486,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="something need to learn or write" data-path="/2020/10/29/something-need-to-learn-or-write/">
+      <div id="lc-pv" data-title="SpringBoot中类型转换" data-path="/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2null/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -512,25 +503,20 @@
 
 
   
-  <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul>
-<li><input disabled="" type="checkbox"> 实体类使用 java.x 的 valiation 和 hibernate 的 validator 进行校验</li>
-<li><input disabled="" type="checkbox"> Spring Data JPA 的更深入使用</li>
-<li><input disabled="" type="checkbox"> Shiro 或者 Spring Security 整合 JWT</li>
-<li><input disabled="" type="checkbox"> mapstruct 和 beansUtils 的类自动赋值</li>
-<li><input disabled="" type="checkbox"> Java 8-13 中的一些新特性</li>
-<li><input disabled="" type="checkbox"> 前后端分离中的异常处理</li>
-</ul>
-<hr>
-<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
-<li><input disabled="" type="checkbox"> 哈佛的 CS 50 课程</li>
-<li><input disabled="" type="checkbox"> 从零搭建一个 Hexo 主题</li>
-</ul>
-<hr>
-<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a>Leetcode</h3><ul>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="http://141.164.52.228/tags/Array/">数组</a></li>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="http://141.164.52.228/tags/LinkedList/">链表</a></li>
-<li><input disabled="" type="checkbox"> 栈</li>
-</ul>
+  <h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><p>如果前端传来一个日期参数，是用 String 类型的，我们如何在后端进行传参呢？</p>
+<p>也即如下这种情况：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">(Date date)</span> </span>&#123;</span><br><span class="line">        System.out.println(date);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>浏览器输入：<a target="_blank" rel="noopener" href="http://localhost:8080/hello?date=2020-01-01">http://localhost:8080/hello?date=2020-01-01</a></p>
+<p>可以在后台看到  <code>WARN</code> ：</p>
+<blockquote>
+<p>Failed to convert value of type ‘java.lang.String’ to required type ‘java.util.Date’</p>
+</blockquote>
+<h2 id="二、解决"><a href="#二、解决" class="headerlink" title="二、解决"></a>二、解决</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringTransDate</span> <span class="keyword">implements</span> <span class="title">Converter</span>&lt;<span class="title">String</span>, <span class="title">Date</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">convert</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s != <span class="keyword">null</span> &amp;&amp; !<span class="string">&quot;&quot;</span>.equals(s)) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> simpleDateFormat.parse(s);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：要将该类使用 @Component 注入</p>
+</blockquote>
 
   
   
@@ -548,7 +534,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://wangba.me/2020/10/29/something-need-to-learn-or-write/>http://wangba.me/2020/10/29/something-need-to-learn-or-write/</a></p>
+                <p>本文永久链接是：<a href=http://wangba.me/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2null/>http://wangba.me/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2null/</a></p>
               
             
           </blockquote>
@@ -565,10 +551,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-29T20:57:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-26T16:45:05+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年10月29日</p>
+    <p>更新于：2022年3月26日</p>
   </a>
 </div>
 
@@ -577,7 +563,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Life/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Life</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Spring-Boot/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Spring Boot</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
 
 
         
@@ -614,15 +600,19 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/10/30/0071-Simplify-Path/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>0071. Simplify Path</p>
-          <p class='content'>71. Simplify Path MediumGiven an absolute path for a file (Unix-style), simplify it. Or in other ...</p>
+        <a class='prev' href='/2020/09/02/SpringBoot%E4%B8%AD%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>SpringBoot中类型转换</p>
+          <p class='content'>一、问题如果前端传来一个日期参数，是用 String 类型的，我们如何在后端进行传参呢？
+也即如下这种情况：
+12345678@RestControllerpublic class HelloC...</p>
         </a>
       
       
-        <a class='next' href='/2020/10/28/0042-Trapping-Rain-Water/'>
-          <p class='title'>0042. Trapping Rain Water<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>42. Trapping Rain Water HardGiven n non-negative integers representing an elevation map where the...</p>
+        <a class='next' href='/2020/09/01/0003-Longest-Substring-Without-Repeating-Characters/'>
+          <p class='title'>0003.Longest Substring Without Repeating Characters<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>0003. 无重复字符的最长子串 Medium给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+123输入: &quot;abcabcbb&quot;输出: 3 解释...</p>
         </a>
       
     </div>
@@ -665,7 +655,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java"><span class="toc-text">Java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-text">前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leetcode"><span class="toc-text">Leetcode</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%97%AE%E9%A2%98"><span class="toc-text">一、问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E5%86%B3"><span class="toc-text">二、解决</span></a></li></ol>
     </div>
   </section>
 

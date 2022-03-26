@@ -335,7 +335,7 @@
     
         <div class='cover-wrapper post search' style="display: none;">
           
-            <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
+            <div class='cover-bg lazyload placeholder' data-bg="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/Pulsefire%20Ezreal%20Minimalistic.jpg"></div>
           
           <div class='cover-body'>
   <div class='top'>
@@ -510,7 +510,7 @@
 </ol>
 <h2 id="二、处理全局异常"><a href="#二、处理全局异常" class="headerlink" title="二、处理全局异常"></a>二、处理全局异常</h2><p>我们只需要在 <strong>application.properties</strong>中配置：spring.servlet.multipart.max-file-size=1KB</p>
 <p>就可以看见在上传图片时就会报 500 异常：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818200228.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818200228.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818200222467"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818200228.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818200228.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818200222467"></p>
 <p>此时我们可以自己自定义处理 这种异常：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyException</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler(MaxUploadSizeExceededException.class)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myException</span><span class="params">(MaxUploadSizeExceededException e, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">        PrintWriter writer = response.getWriter();</span><br><span class="line">        writer.write(<span class="string">&quot;上传大小限制为1KB&quot;</span>);</span><br><span class="line">        writer.flush();</span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -529,7 +529,7 @@
 
 
 <p>结果：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818203200.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818203200.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818203200239"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818203200.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818203200.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818203200239"></p>
 <h2 id="四、请求参数预处理"><a href="#四、请求参数预处理" class="headerlink" title="四、请求参数预处理"></a>四、请求参数预处理</h2><p>实体类：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> price;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -545,9 +545,9 @@
 
 
 <p>使用 Postman 进行测试：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818204743.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818204743.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818204743394"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818204743.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818204743.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818204743394"></p>
 <p>得到最终结果为：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818204824.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818204824.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818204824095"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818204824.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818204824.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818204824095"></p>
 <p>当出现相同参数时，并不能分清楚参数属于哪个对象，只能将参数赋值给每一个拥有相同参数的对象</p>
 <p>处理：</p>
 <p>Controller：</p>
@@ -561,9 +561,9 @@
 
 
 <p>使用 Postman 进行测试：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818205810.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818205810.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818205810853"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818205810.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818205810.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818205810853"></p>
 <p>结果：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818205832.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200818205832.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818205832096"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818205832.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200818205832.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200818205832096"></p>
 
   
   
@@ -598,10 +598,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-30T15:07:09+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-26T17:00:46+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月30日</p>
+    <p>更新于：2022年3月26日</p>
   </a>
 </div>
 

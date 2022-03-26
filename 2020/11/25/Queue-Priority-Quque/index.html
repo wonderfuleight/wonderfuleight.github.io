@@ -335,7 +335,7 @@
     
         <div class='cover-wrapper post search' style="display: none;">
           
-            <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
+            <div class='cover-bg lazyload placeholder' data-bg="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/Pulsefire%20Ezreal%20Minimalistic.jpg"></div>
           
           <div class='cover-body'>
   <div class='top'>
@@ -542,7 +542,7 @@
 </ul>
 <p>二叉堆：每个结点最多有两个孩子结点。正常情况下，不仔细描述，一般默认堆为二叉堆。</p>
 <h3 id="2-1-实现堆"><a href="#2-1-实现堆" class="headerlink" title="2.1 实现堆"></a>2.1 实现堆</h3><p>如果要实现一个堆，首先就要考虑使用数组实现还是链表实现，这个时候就要考虑到它的性质呢，它是一个完全二叉树，那么用数组实现它是最好的选择，来看下例子：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125165137.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125165137.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125165136575"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125165137.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125165137.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125165136575"></p>
 <p>可以看到，在这里面不会浪费空间，除了第 0 号索引，那是为了方便后面计算暂定，用数组还会得到下面的巨大好处：</p>
 <ul>
 <li><p>每一个结点 ( i ) 的左孩子和右孩子的索引分别为：<code>2 * i</code> 和 <code>(2 * i) + 1</code></p>
@@ -554,7 +554,7 @@
 </ul>
 <p>既然我们已经确定用什么来存储了，接下来就要考虑其中的操作了，最起码的 CRUD 要有吧</p>
 <p>来瞅瞅增加一个元素的操作：还是用上面的那个例子吧，如果此时增加一个元素 10，那得到结果就为：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125170533.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125170533.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125170532356"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125170533.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125170533.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125170532356"></p>
 <p>那此时问题就出现了啊，6 明显要小于 10 啊，这就不符合堆的性质了，那么我们就要进行一个重要的操作了：</p>
 <p><code>heapify (堆化)</code></p>
 <h3 id="2-2-Sift-Up"><a href="#2-2-Sift-Up" class="headerlink" title="2.2 Sift Up"></a>2.2 Sift Up</h3><p>像上面那个例子里面明显要把 10 放到最上方的操作，一般叫做 <code>Sift Up (上浮)</code>，对应的也要下沉操作，在下面进行介绍，那现在面临的问题就是怎么把 10 上浮到最上方的位置，直接与最上方位置进行交换吗？明显不行。</p>
@@ -562,18 +562,18 @@
 <li>只需要将这个结点与自己的父结点进行比较，如果符合堆的性质就不交换；如果不符合就交换父子结点</li>
 </ul>
 <p>实现一下上面的例子：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125173348.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125173348.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125173347010"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125173348.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125173348.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125173347010"></p>
 <p>这样就可以满足形成一个堆的条件了</p>
 <h3 id="2-3-Sift-Down"><a href="#2-3-Sift-Down" class="headerlink" title="2.3 Sift Down"></a>2.3 Sift Down</h3><p>与  Sift Up 对应的操作就是 Sift Down 操作，下浮操作一般都是处于删除之中，按照常理来说，只需要和上浮操作相反就行，理论上就是：</p>
 <ul>
 <li>直接将该结点删除，随后将子结点中较大的那个放到该位置，后续都进行这样的操作</li>
 </ul>
 <p>但是让我们来看个例子：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125184914.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125184914.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125184913889"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125184914.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125184914.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125184913889"></p>
 <p>可以看到这次进行下沉操作后，该堆并不是一个完全二叉树了，并且在数组上有多余的空间了。那么我们应该怎样去避免这种情况的发生了</p>
 <p>我们的目的就是让它进行下沉操作后还是一个堆，只需要将要<code>删除的结点与最后一个结点进行互换，再进行下沉操作即可</code></p>
 <p>让我们来继续看上面这个例子：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125185710.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125185710.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125185709215"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125185710.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125185710.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125185709215"></p>
 <ul>
 <li>首先删除 10 ，将 最后一个元素放到该位置</li>
 <li>与子结点进行比较，进行下沉操作，将 4 与 9 互换</li>
@@ -592,7 +592,7 @@
 </ul>
 <p>如何实现堆化操作：</p>
 <p>根据上面的描述，最关键的应该是找到第一个非叶结点，其实最后一个结点的父结点就是第一个非叶结点，下面让我们看一个实例：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125205446.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20201125205446.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125205445164"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125205446.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20201125205446.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20201125205445164"></p>
 
   
   
@@ -627,10 +627,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-25T20:58:09+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-26T17:02:52+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年11月25日</p>
+    <p>更新于：2022年3月26日</p>
   </a>
 </div>
 

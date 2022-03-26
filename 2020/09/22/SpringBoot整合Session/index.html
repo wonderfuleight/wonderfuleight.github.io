@@ -335,7 +335,7 @@
     
         <div class='cover-wrapper post search' style="display: none;">
           
-            <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
+            <div class='cover-bg lazyload placeholder' data-bg="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/Pulsefire%20Ezreal%20Minimalistic.jpg"></div>
           
           <div class='cover-body'>
   <div class='top'>
@@ -509,16 +509,16 @@
 </blockquote>
 <p>简单地来说：由架构导致了这种情况的发生</p>
 <p><code>present</code> </p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922201419.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922201419.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922201418003"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922201419.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922201419.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922201418003"></p>
 <p>最早的架构就是很简单的单服务器状态，如果我们要保存用户状态，那么只需要一个 session 就行了</p>
 <p><code>now</code> </p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922200615.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922200615.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922200614157"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922200615.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922200615.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922200614157"></p>
 <p>现在的架构都是集群式了：可以假设这样的情景，如果我在已经登录的状态，我首先要看视频 (这个服务假如在 A 服务器上)，然后我又浏览图片 (这个服务假如在 B 服务器上)，如果不共享 session 的话，那么我选择的服务不在一个服务器上就要重新登录了，这对用户也太不友好了。</p>
 <p><code>解决方案 </code> </p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922200856.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922200856.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922200847137"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922200856.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922200856.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922200847137"></p>
 <p>主流的解决方案：将 seesion 存到 redis 中，每次 server 要向 session 中写数据，或者要读 session 的数据时，都是对 redis 中的 session 进行操作。</p>
 <h2 id="二、环境搭建"><a href="#二、环境搭建" class="headerlink" title="二、环境搭建"></a>二、环境搭建</h2><p><code>不想 error ，先看依赖</code></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922202750.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922202750.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922202748557"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922202750.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922202750.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922202748557"></p>
 <p><code>pom.xml</code> </p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--redis--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--web--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--spring session--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -537,11 +537,11 @@
 
 
 <h2 id="三、测试"><a href="#三、测试" class="headerlink" title="三、测试"></a>三、测试</h2><p>访问：<a target="_blank" rel="noopener" href="http://localhost:8080/set">http://localhost:8080/set</a></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922210637.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922210637.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922210635181"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922210637.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922210637.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922210635181"></p>
 <p>此时打开 redis 看一下：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922212207.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922212207.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922212205673"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922212207.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922212207.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922212205673"></p>
 <p>再访问：<a target="_blank" rel="noopener" href="http://localhost:8081/get">http://localhost:8081/get</a></p>
-<img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922212407.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200922212407.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922212405236" style="zoom:150%;" />
+<img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922212407.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200922212407.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200922212405236" style="zoom:150%;" />
 
 
 
@@ -583,10 +583,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-30T15:09:20+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-26T17:02:52+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月30日</p>
+    <p>更新于：2022年3月26日</p>
   </a>
 </div>
 

@@ -335,7 +335,7 @@
     
         <div class='cover-wrapper post search' style="display: none;">
           
-            <div class='cover-bg lazyload placeholder' data-bg="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929143512.jpg"></div>
+            <div class='cover-bg lazyload placeholder' data-bg="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/Pulsefire%20Ezreal%20Minimalistic.jpg"></div>
           
           <div class='cover-body'>
   <div class='top'>
@@ -544,7 +544,7 @@
 
 
 <p><code>登录接口</code></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929172425.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200929172425.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929172423472"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200929172425.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200929172425.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200929172423472"></p>
 <blockquote>
 <p>注：</p>
 <ul>
@@ -553,7 +553,7 @@
 </ul>
 </blockquote>
 <p><code>登录失败</code></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930092635.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930092635.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930092629637"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930092635.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930092635.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930092629637"></p>
 <blockquote>
 <p>注：</p>
 <ul>
@@ -561,7 +561,7 @@
 </ul>
 </blockquote>
 <p><code>注销登录</code></p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930093600.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930093600.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930093559635"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930093600.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930093600.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930093559635"></p>
 <h2 id="三、Deep-Learning"><a href="#三、Deep-Learning" class="headerlink" title="三、Deep Learning"></a>三、Deep Learning</h2><h3 id="3-1-深入了解登录失败"><a href="#3-1-深入了解登录失败" class="headerlink" title="3.1 深入了解登录失败"></a>3.1 深入了解登录失败</h3><p>​        在上面我们提到了无论是用户名和密码其中一个错误，就会返回 Bad credentials，实则在其中还有很多种错误，而且用户名是有用户名错误，只是最终被 Bad credentials 覆盖了，稍微分析一下：</p>
 <p><code>AbstractUserDetailsAuthenticationProvider</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Authentication <span class="title">authenticate</span><span class="params">(Authentication authentication)</span> <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">    Assert.isInstanceOf(UsernamePasswordAuthenticationToken.class, authentication, () -&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.messages.getMessage(<span class="string">&quot;AbstractUserDetailsAuthenticationProvider.onlySupports&quot;</span>, <span class="string">&quot;Only UsernamePasswordAuthenticationToken is supported&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    String username = authentication.getPrincipal() == <span class="keyword">null</span> ? <span class="string">&quot;NONE_PROVIDED&quot;</span> : authentication.getName();</span><br><span class="line">    <span class="keyword">boolean</span> cacheWasUsed = <span class="keyword">true</span>;</span><br><span class="line">    UserDetails user = <span class="keyword">this</span>.userCache.getUserFromCache(username);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        cacheWasUsed = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            user = <span class="keyword">this</span>.retrieveUser(username, (UsernamePasswordAuthenticationToken)authentication);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UsernameNotFoundException var6) &#123;</span><br><span class="line">            <span class="keyword">this</span>.logger.debug(<span class="string">&quot;User &#x27;&quot;</span> + username + <span class="string">&quot;&#x27; not found&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.hideUserNotFoundExceptions) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> BadCredentialsException(<span class="keyword">this</span>.messages.getMessage(<span class="string">&quot;AbstractUserDetailsAuthenticationProvider.badCredentials&quot;</span>, <span class="string">&quot;Bad credentials&quot;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">          <span class="comment">// 省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -573,7 +573,7 @@
 <li>一旦抛出 UsernameNotFoundException ，就看 hideUserNotFoundExceptions 的值了，如果为 true，就会抛出 Bad credentials</li>
 </ul>
 <p>进行断点调试：输错用户名，并打上断点：</p>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930135354.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930135354.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930135352906"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930135354.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930135354.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930135352906"></p>
 <p>通过上图就能看出，hideUserNotFoundExceptions 默认值是 true 的</p>
 <h3 id="3-2-未认证处理"><a href="#3-2-未认证处理" class="headerlink" title="3.2 未认证处理"></a>3.2 未认证处理</h3><p>在前后端分离，如果出现未认证的状态，不可能控制前端来跳转页面等，只能给前端返回相应的信息即可：</p>
 <p>在 <code>AuthenticationEntryPoint</code> 接口中有一个方法：<code>commence</code></p>
@@ -585,17 +585,17 @@
 <ul>
 <li>在 <strong>Postman</strong> 中直接使用 <strong>GET</strong> 方式请求：localhost:8080/security</li>
 </ul>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141616.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141616.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930141614962"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930141616.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930141616.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930141614962"></p>
 <p>此方法在第一节中已经写过了，就是输出一个 <strong>Spring Security</strong></p>
 <ul>
 <li>在方法内打上断点</li>
 </ul>
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141514.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930141514.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930141512452"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930141514.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930141514.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930141512452"></p>
 <p>从上面的图就可以看见，<strong>useForward</strong> 的默认值是 <strong>false</strong>，那么就可以确定是走的重定向</p>
 <p>只需要重写该方法覆盖它就行：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.exceptionHandling()</span><br><span class="line">.authenticationEntryPoint((req, resp, authException) -&gt; &#123;</span><br><span class="line">    resp.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">    PrintWriter out = resp.getWriter();</span><br><span class="line">    out.write(<span class="string">&quot;尚未登录，请先登录&quot;</span>);</span><br><span class="line">    out.flush();</span><br><span class="line">    out.close();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930164934.png" class="lazyload" data-srcset="https://gitee.com/wonderfuleight/blogImg/raw/master//20200930164934.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930143626120"></p>
+<p><img src="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930164934.png" class="lazyload" data-srcset="https://blog-img-1303143226.cos.ap-shanghai.myqcloud.com/blog-img/20200930164934.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20200930143626120"></p>
 
   
   
@@ -630,10 +630,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-30T16:49:43+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-26T17:02:53+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月30日</p>
+    <p>更新于：2022年3月26日</p>
   </a>
 </div>
 
